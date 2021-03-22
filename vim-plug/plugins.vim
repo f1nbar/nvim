@@ -31,7 +31,7 @@ Plug 'tpope/vim-rhubarb'
 Plug 'junegunn/gv.vim'
 Plug 'evanleck/vim-svelte', {'branch': 'main'}
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-PLug 'codechips/coc-svelte'
+Plug 'codechips/coc-svelte'
 
 
 call plug#end()
