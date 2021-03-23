@@ -34,6 +34,7 @@ Plug 'evanleck/vim-svelte', {'branch': 'main'}
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'codechips/coc-svelte'
 Plug 'ianding1/leetcode.vim'
+Plug 'jeffkreeftmeijer/vim-numbertoggle' 
 
 
 
