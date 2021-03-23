@@ -24,6 +24,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'junegunn/gv.vim'
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'sbdchd/neoformat'
 Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-fugitive'
@@ -32,6 +33,8 @@ Plug 'junegunn/gv.vim'
 Plug 'evanleck/vim-svelte', {'branch': 'main'}
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'codechips/coc-svelte'
+Plug 'ianding1/leetcode.vim'
+
 
 
 call plug#end()
