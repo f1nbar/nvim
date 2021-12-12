@@ -8,34 +8,40 @@ endif
 
 call plug#begin('~/.config/nvim/autoload/plugged')
 
-" Better Syntax Support
-Plug 'sheerun/vim-polyglot'
-" File Explorer
 Plug 'scrooloose/NERDTree'
-" Auto pairs for '(' '[' '{'
 Plug 'jiangmiao/auto-pairs'
 Plug 'ryanoasis/vim-devicons'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
-Plug 'lervag/vimtex'
-Plug 'pangloss/vim-javascript'
-Plug 'dense-analysis/ale'
-Plug 'mhinz/vim-signify'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-rhubarb'
-Plug 'junegunn/gv.vim'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'sbdchd/neoformat'
-Plug 'mhinz/vim-signify'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-rhubarb'
-Plug 'junegunn/gv.vim'
-Plug 'evanleck/vim-svelte', {'branch': 'main'}
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'codechips/coc-svelte'
-Plug 'ianding1/leetcode.vim'
 Plug 'jeffkreeftmeijer/vim-numbertoggle' 
+Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
+Plug 'hoob3rt/lualine.nvim'
+Plug 'glepnir/dashboard-nvim'
+Plug 'nvim-lualine/lualine.nvim'
 
+Plug 'dense-analysis/ale'
+Plug 'sheerun/vim-polyglot'
+Plug 'neovim/nvim-lspconfig'
+Plug 'glepnir/lspsaga.nvim'
 
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'BurntSushi/ripgrep'
+Plug 'sharkdp/fd'
+
+Plug 'mhinz/vim-signify'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
+Plug 'junegunn/gv.vim'
+
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/vim-vsnip'
+
+Plug 'dstein64/vim-startuptime'
 
 call plug#end()

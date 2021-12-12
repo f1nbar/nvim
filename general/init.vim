@@ -1,18 +1,18 @@
-let g:NERDTreeShowHidden = 1
-let g:NERDTreeMinimalUI = 1
-let g:NERDTreeIgnore = []
-let g:NERDTreeStatusline = ''
-" Automaticaly close nvim if NERDTree is only thing left open
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-" Toggle
-nnoremap <silent> <C-b> :NERDTreeToggle<CR>
+let g:nerdtreeshowhidden = 1
+let g:nerdtreeminimalui = 1
+let g:nerdtreeignore = []
+let g:nerdtreestatusline = ''
+" automaticaly close nvim if nerdtree is only thing left open
+autocmd bufenter * if (winnr("$") == 1 && exists("b:nerdtree") && b:nerdtree.istabtree()) | q | endif
+" toggle
+nnoremap <silent> <c-b> :nerdtreetoggle<cr>
 
 " use alt+hjkl to move between split/vsplit panels
-tnoremap <A-h> <C-\><C-n><C-w>h
-tnoremap <A-j> <C-\><C-n><C-w>j
-tnoremap <A-k> <C-\><C-n><C-w>k
-tnoremap <A-l> <C-\><C-n><C-w>l
-nnoremap <A-h> <C-w>h
-nnoremap <A-j> <C-w>j
-nnoremap <A-k> <C-w>k
-nnoremap <A-l> <C-w>l
+tnoremap <a-h> <c-\><c-n><c-w>h
+tnoremap <a-j> <c-\><c-n><c-w>j
+tnoremap <a-k> <c-\><c-n><c-w>k
+tnoremap <a-l> <c-\><c-n><c-w>l
+nnoremap <a-h> <c-w>h
+nnoremap <a-j> <c-w>j
+nnoremap <a-k> <c-w>k
+nnoremap <a-l> <c-w>l
