@@ -68,4 +68,15 @@ keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 
 -- Telescope
 keymap("n", "<leader>f", "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>", opts)
-keymap("n", "<leader>g", "<cmd>Telescope live_grep<cr>", opts)
+keymap("n", "<leader>G", "<cmd>Telescope live_grep<cr>", opts)
+keymap("n", "<leader>P", "<cmd>Telescope projects<cr>", opts)
+
+-- DAP
+keymap("n", "<leader>db", "<cmd>lua require'dap'.toggle_breakpoint()<cr>", opts)
+keymap("n", "<leader>dc", "<cmd>lua require'dap'.continue()<cr>", opts)
+keymap("n", "<leader>di", "<cmd>lua require'dap'.step_into()<cr>", opts)
+keymap("n", "<leader>do", "<cmd>lua require'dap'.step_over()<cr>", opts)
+keymap("n", "<leader>dO", "<cmd>lua require'dap'.step_out()<cr>", opts)
+keymap("n", "<leader>dr", "<cmd>lua require'dap'.repl.toggle()<cr>", opts)
+keymap("n", "<leader>dl", "<cmd>lua require'dap'.run_last()<cr>", opts)
+keymap("n", "<leader>du", "<cmd>lua require'dapui'.toggle()<cr>", opts)
