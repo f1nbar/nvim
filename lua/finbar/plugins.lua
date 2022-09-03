@@ -28,7 +28,6 @@ local status_ok, packer = pcall(require, "packer")
 if not status_ok then
   return
 end
-
 -- Have packer use a popup window
 packer.init {
   display = {
@@ -72,7 +71,10 @@ return packer.startup(function(use)
 
   -- LSP
   use "neovim/nvim-lspconfig" -- enable LSP
-  use "williamboman/nvim-lsp-installer" -- simple to use language server installer
+  -- use "williamboman/nvim-lsp-installer" -- simple to use language server installer
+  use "williamboman/mason.nvim" -- LSP management 
+  use "williamboman/mason-lspconfig.nvim" -- Bridge mason and lspconfig
+
 
   -- Telescope for finding files and live grep
   use "nvim-telescope/telescope.nvim"
