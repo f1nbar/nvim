@@ -70,10 +70,8 @@ return packer.startup(function(use)
   use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
 
   -- LSP
+  use "williamboman/nvim-lsp-installer" -- simple to use language server installer
   use "neovim/nvim-lspconfig" -- enable LSP
-  -- use "williamboman/nvim-lsp-installer" -- simple to use language server installer
-  use "williamboman/mason.nvim" -- LSP management 
-  use "williamboman/mason-lspconfig.nvim" -- Bridge mason and lspconfig
 
 
   -- Telescope for finding files and live grep
@@ -109,6 +107,9 @@ return packer.startup(function(use)
 
   -- Java
   use "mfussenegger/nvim-jdtls"
+
+  -- Zen 
+  use "folke/zen-mode.nvim"
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
