@@ -64,6 +64,7 @@ return packer.startup(function(use)
   use "saadparwaiz1/cmp_luasnip" -- snippet completions
   use "hrsh7th/cmp-nvim-lsp" -- lsp completions
   use "hrsh7th/cmp-nvim-lua" -- completions for neovim lua API
+  use({'scalameta/nvim-metals', requires = { "nvim-lua/plenary.nvim" }})
 
  -- Snippets
   use "L3MON4D3/LuaSnip" --snippet engine
@@ -89,6 +90,7 @@ return packer.startup(function(use)
   use "numToStr/Comment.nvim" -- Easily comment stuff with "gcc etc"
   use "jose-elias-alvarez/null-ls.nvim"
   use "RRethy/vim-illuminate"
+  use "chentoast/marks.nvim" -- Better marks
 
   -- NvimTree file tree
   use "kyazdani42/nvim-web-devicons"

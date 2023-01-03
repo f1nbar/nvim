@@ -5,7 +5,7 @@ end
 
 local lspconfig = require("lspconfig")
 
-local servers = { "sumneko_lua", "lemminx"}
+local servers = { "sumneko_lua", "lemminx", "metals"}
 
 lsp_installer.setup({
 	ensure_installed = servers,
