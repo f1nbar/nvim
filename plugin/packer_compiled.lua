@@ -41,6 +41,9 @@ local function save_profiles(threshold)
       results[i] = elem[1] .. ' took ' .. elem[2] .. 'ms'
     end
   end
+  if threshold then
+    table.insert(results, '(Only showing plugins that took longer than ' .. threshold .. ' ms ' .. 'to load)')
+  end
 
   _G._packer.profile_output = results
 end
@@ -146,6 +149,11 @@ _G.packer_plugins = {
     path = "/home/finbar/.local/share/nvim/site/pack/packer/start/lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
   },
+  ["marks.nvim"] = {
+    loaded = true,
+    path = "/home/finbar/.local/share/nvim/site/pack/packer/start/marks.nvim",
+    url = "https://github.com/chentoast/marks.nvim"
+  },
   ["null-ls.nvim"] = {
     loaded = true,
     path = "/home/finbar/.local/share/nvim/site/pack/packer/start/null-ls.nvim",
@@ -190,6 +198,16 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/finbar/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
+  },
+  ["nvim-metals"] = {
+    loaded = true,
+    path = "/home/finbar/.local/share/nvim/site/pack/packer/start/nvim-metals",
+    url = "https://github.com/scalameta/nvim-metals"
+  },
+  ["nvim-tree-docs"] = {
+    loaded = true,
+    path = "/home/finbar/.local/share/nvim/site/pack/packer/start/nvim-tree-docs",
+    url = "https://github.com/nvim-treesitter/nvim-tree-docs"
   },
   ["nvim-tree.lua"] = {
     loaded = true,
