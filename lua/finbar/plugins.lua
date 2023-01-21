@@ -55,7 +55,6 @@ require("lazy").setup ({
     build=":TSUpdate"
   },
 
-   "nvim-treesitter/nvim-tree-docs", -- Generate docs
    "JoosepAlviste/nvim-ts-context-commentstring", -- Smarter comments with treesitter intergration
    "windwp/nvim-autopairs", -- Autopairs, integrates with both cmp and treesitter
    "numToStr/Comment.nvim", -- Easily comment stuff with "gcc etc",

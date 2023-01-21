@@ -19,5 +19,4 @@ require "finbar.project"
 require "finbar.dap"
 require "finbar.illuminate"
 require "finbar.marks"
-require "finbar.nvim-tree-docs"
 --[[ require "finbar.nvim-metals" ]]
