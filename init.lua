@@ -18,5 +18,7 @@ require "finbar.alpha"
 require "finbar.project"
 require "finbar.dap"
 require "finbar.illuminate"
-require "finbar.marks"
+require "finbar.diffview"
+require "finbar.harpoon"
+--[[ require "finbar.marks" ]]
 --[[ require "finbar.nvim-metals" ]]

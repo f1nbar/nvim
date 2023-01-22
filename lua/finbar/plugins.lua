@@ -22,6 +22,7 @@ require("lazy").setup ({
   "nvim-lua/plenary.nvim", -- Useful lua functions used ny lots of plugins
   -- Git
   "lewis6991/gitsigns.nvim", -- show git differences
+  "sindrets/diffview.nvim", -- diff view
   -- Terminal
   "akinsho/toggleterm.nvim",
   -- Theme
@@ -46,7 +47,7 @@ require("lazy").setup ({
    "neovim/nvim-lspconfig", -- enable LSP
   -- Telescope for finding files and live grep
    "nvim-telescope/telescope.nvim",
-   "nvim-telescope/telescope-media-files.nvim",
+   "nvim-telescope/telescope-media-files.nvim", 
    "ahmedkhalf/project.nvim", -- find recently opened projects
 
   -- Syntax highlighting with comments
@@ -60,7 +61,8 @@ require("lazy").setup ({
    "numToStr/Comment.nvim", -- Easily comment stuff with "gcc etc",
    "jose-elias-alvarez/null-ls.nvim",
    "RRethy/vim-illuminate",
-   "chentoast/marks.nvim", -- Better marks
+   --[[ "chentoast/marks.nvim", -- Better marks ]]
+   "ThePrimeagen/harpoon",
 
   -- NvimTree file tree
    "kyazdani42/nvim-web-devicons",
