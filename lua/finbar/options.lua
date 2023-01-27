@@ -31,7 +31,7 @@ local options = {
 	signcolumn = "yes", 				-- always show the sign column
 	wrap = false,  					-- display lines as one long line
 	scrolloff = 8, 					-- centers cursor
-	sidescrolloff = 8, 				-- centers cursor
+	sidescrolloff = 8 				-- centers cursor
 }
 
 vim.cmd "set whichwrap+=<,>,[,],h,l" 		-- treat words with commas etc as single words

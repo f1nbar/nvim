@@ -20,5 +20,6 @@ require "finbar.dap"
 require "finbar.illuminate"
 require "finbar.diffview"
 require "finbar.harpoon"
+require "finbar.blamer"
 --[[ require "finbar.marks" ]]
 --[[ require "finbar.nvim-metals" ]]
