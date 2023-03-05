@@ -30,7 +30,6 @@ local setup = {
     -- override the label used to display some keys. It doesn't effect WK in any other way.
     -- For example:
     ["<space>"] = "SPC",
-    [";"] = "semi",
     -- ["<cr>"] = "RET",
     -- ["<tab>"] = "TAB",
   },
@@ -127,7 +126,7 @@ local mappings = {
     j = { "<cmd>lua require 'harpoon.ui'.nav_file(1)<cr>", "File 1" },
     k = { "<cmd>lua require 'harpoon.ui'.nav_file(2)<cr>", "File 2" },
     l = { "<cmd>lua require 'harpoon.ui'.nav_file(3)<cr>", "File 3" },
-    semi = { "<cmd>lua require 'harpoon.ui'.nav_file(4)<cr>", "File 4" },
+    -- TODO fix me as I don't work, add to normal keymaps[[ ; = { "<cmd>lua require 'harpoon.ui'.nav_file(4)<cr>", "File 4" }, ]] 
   },
 
   l = {

@@ -66,18 +66,7 @@ keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
 keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 
--- Telescope
-keymap("n", "<leader>f", "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>", opts)
-keymap("n", "<leader>G", "<cmd>Telescope live_grep<cr>", opts)
-keymap("n", "<leader>P", "<cmd>Telescope projects<cr>", opts)
-
--- Harpoon
---[[ keymap("n", "<leader>a", ":lua require('harpoon.mark').add_file()<CR>", opts) ]]
---[[ keymap("n", "<leader>s", ":lua require('harpoon.ui').toggle_quick_menu()<CR>", opts) ]]
---[[ keymap("n", "<leader>n", ":lua require('harpoon.ui').nav_file(1)<CR>", opts) ]]
---[[ keymap("n", "<leader>e", ":lua require('harpoon.ui').nav_file(2)<CR>", opts) ]]
---[[ keymap("n", "<leader>i", ":lua require('harpoon.ui').nav_file(3)<CR>", opts) ]]
---[[ keymap("n", "<leader>o", ":lua require('harpoon.ui').nav_file(4)<CR>", opts) ]]
+keymap("n", "<leader>d;", "<cmd>lua require 'harpoon.ui'.nav_file(4)<cr>", opts)
 
 -- DAP
 keymap("n", "<leader>db", "<cmd>lua require'dap'.toggle_breakpoint()<cr>", opts)

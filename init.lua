@@ -11,7 +11,7 @@ require "finbar.gitsigns"
 require "finbar.comment"
 require "finbar.nvim-tree"
 require "finbar.which-key"
-require "finbar.barbar"
+--[[ require "finbar.barbar ]]
 require "finbar.toggleterm"
 require "finbar.lualine"
 require "finbar.alpha"

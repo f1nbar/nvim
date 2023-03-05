@@ -28,7 +28,7 @@ require("lazy").setup ({
   "akinsho/toggleterm.nvim", -- terminals everywhere
   -- Theme
   "catppuccin/nvim",
-  "romgrk/barbar.nvim", -- tabs and buffers
+  --[[ "romgrk/barbar.nvim", -- tabs and buffers ]]
   "nvim-lualine/lualine.nvim", -- statusline
   "goolord/alpha-nvim", --greeter
   -- cmp plugins
