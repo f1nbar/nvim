@@ -28,7 +28,6 @@ require("lazy").setup ({
   "akinsho/toggleterm.nvim", -- terminals everywhere
   -- Theme
   "catppuccin/nvim",
-  --[[ "romgrk/barbar.nvim", -- tabs and buffers ]]
   "nvim-lualine/lualine.nvim", -- statusline
   "goolord/alpha-nvim", --greeter
   -- cmp plugins
@@ -48,7 +47,7 @@ require("lazy").setup ({
    "neovim/nvim-lspconfig", -- enable LSP
   -- Telescope for finding files and live grep
    "nvim-telescope/telescope.nvim",
-   "nvim-telescope/telescope-media-files.nvim", 
+   "nvim-telescope/telescope-media-files.nvim",
    "ahmedkhalf/project.nvim", -- find recently opened projects
 
   -- Syntax highlighting with comments
@@ -62,9 +61,8 @@ require("lazy").setup ({
    "numToStr/Comment.nvim", -- Easily comment stuff with "gcc etc",
    "jose-elias-alvarez/null-ls.nvim",
    "RRethy/vim-illuminate",
-   --[[ "chentoast/marks.nvim", -- Better marks ]]
    "ThePrimeagen/harpoon",
-
+   "chentoast/marks.nvim", -- Better marks
   -- NvimTree file tree
    "kyazdani42/nvim-web-devicons",
    "kyazdani42/nvim-tree.lua",
