@@ -19,14 +19,15 @@ vim.g.maplocalleader = ' '
 -- Install your plugins here
 require("lazy").setup ({
   "nvim-lua/popup.nvim", -- An implementation of the Popup API from vim in Neovim
-  "nvim-lua/plenary.nvim", -- Useful lua functions used ny lots of plugins
+  "nvim-lua/plenary.nvim", -- useful lua functions used ny lots of plugins
   -- Git
   "lewis6991/gitsigns.nvim", -- show git differences
+  "APZelos/blamer.nvim", -- VS codelens similar blame
+  "sindrets/diffview.nvim", -- diff view
   -- Terminal
-  "akinsho/toggleterm.nvim",
+  "akinsho/toggleterm.nvim", -- terminals everywhere
   -- Theme
   "catppuccin/nvim",
-  "romgrk/barbar.nvim", -- tabs and buffers
   "nvim-lualine/lualine.nvim", -- statusline
   "goolord/alpha-nvim", --greeter
   -- cmp plugins
@@ -60,8 +61,8 @@ require("lazy").setup ({
    "numToStr/Comment.nvim", -- Easily comment stuff with "gcc etc",
    "jose-elias-alvarez/null-ls.nvim",
    "RRethy/vim-illuminate",
+   "ThePrimeagen/harpoon",
    "chentoast/marks.nvim", -- Better marks
-
   -- NvimTree file tree
    "kyazdani42/nvim-web-devicons",
    "kyazdani42/nvim-tree.lua",

@@ -3,7 +3,8 @@ if not status_ok then
   return
 end
 
-telescope.load_extension('media_files')
+telescope.load_extension("media_files")
+telescope.load_extension("harpoon")
 
 local actions = require "telescope.actions"
 

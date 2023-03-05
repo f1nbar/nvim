@@ -80,7 +80,6 @@ local opts = {
 
 local mappings = {
   ["/"] = { "<cmd>lua require(\"Comment.api\").toggle_current_linewise()<CR>", "Comment" },
-  ["a"] = { "<cmd>Alpha<cr>", "Alpha" },
   ["b"] = {
     "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
     "Buffers",
@@ -96,15 +95,6 @@ local mappings = {
   },
   ["F"] = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
   ["P"] = { "<cmd>Telescope projects<cr>", "Projects" },
-
-  p = {
-    name = "Packer",
-    c = { "<cmd>PackerCompile<cr>", "Compile" },
-    i = { "<cmd>PackerInstall<cr>", "Install" },
-    s = { "<cmd>PackerSync<cr>", "Sync" },
-    S = { "<cmd>PackerStatus<cr>", "Status" },
-    u = { "<cmd>PackerUpdate<cr>", "Update" },
-  },
 
   g = {
     name = "Git",
@@ -127,6 +117,16 @@ local mappings = {
       "<cmd>Gitsigns diffthis HEAD<cr>",
       "Diff",
     },
+  },
+
+  d = {
+    name = "Harpoon",
+    f = { "<cmd>lua require 'harpoon.ui'.toggle_quick_menu()<cr>", "Menu" },
+    a = { "<cmd>lua require 'harpoon.mark'.add_file()<cr>", "Add File" },
+    j = { "<cmd>lua require 'harpoon.ui'.nav_file(1)<cr>", "File 1" },
+    k = { "<cmd>lua require 'harpoon.ui'.nav_file(2)<cr>", "File 2" },
+    l = { "<cmd>lua require 'harpoon.ui'.nav_file(3)<cr>", "File 3" },
+    -- TODO fix me as I don't work, add to normal keymaps[[ ; = { "<cmd>lua require 'harpoon.ui'.nav_file(4)<cr>", "File 4" }, ]] 
   },
 
   l = {
@@ -172,16 +172,6 @@ local mappings = {
     C = { "<cmd>Telescope commands<cr>", "Commands" },
   },
 
-  --[[ t = { ]]
-  --[[   name = "Terminal", ]]
-  --[[   n = { "<cmd>lua _NODE_TOGGLE()<cr>", "Node" }, ]]
-  --[[   u = { "<cmd>lua _NCDU_TOGGLE()<cr>", "NCDU" }, ]]
-  --[[   t = { "<cmd>lua _HTOP_TOGGLE()<cr>", "Htop" }, ]]
-  --[[   p = { "<cmd>lua _PYTHON_TOGGLE()<cr>", "Python" }, ]]
-  --[[   f = { "<cmd>ToggleTerm direction=float<cr>", "Float" }, ]]
-  --[[   h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal" }, ]]
-  --[[   v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" }, ]]
-  --[[ }, ]]
 }
 
 local vopts = {

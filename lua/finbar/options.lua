@@ -14,7 +14,7 @@ local options = {
 	mouse = "a", 					-- allow the mouse to be used in neovim
 	pumheight = 10, 				-- pop up menu height
 	showmode = false, 				-- don't show INSERT, NORMAL etc 
-	showtabline = 2, 				-- always show tabs
+	showtabline = 0, 				-- don't show tabs now that we are using harpoon
 	smartcase = true, 				-- smart case
 	smartindent = true, 				-- improve indenting for supported languages 
 	splitbelow = true, 				-- force all horizontal splits to go below current window
@@ -31,7 +31,7 @@ local options = {
 	signcolumn = "yes", 				-- always show the sign column
 	wrap = false,  					-- display lines as one long line
 	scrolloff = 8, 					-- centers cursor
-	sidescrolloff = 8, 				-- centers cursor
+	sidescrolloff = 8 				-- centers cursor
 }
 
 vim.cmd "set whichwrap+=<,>,[,],h,l" 		-- treat words with commas etc as single words
