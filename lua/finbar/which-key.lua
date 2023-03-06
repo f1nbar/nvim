@@ -129,6 +129,16 @@ local mappings = {
     -- TODO fix me as I don't work, add to normal keymaps[[ ; = { "<cmd>lua require 'harpoon.ui'.nav_file(4)<cr>", "File 4" }, ]] 
   },
 
+  D = {
+    name = "DAP",
+    u = { "<cmd>lua require 'dapui'.toggle()<cr>", "DAPUI" },
+    b = { "<cmd>lua require 'dap'.toggle_breakpoint()<cr>", "Toggle Breakpoint" },
+    c = { "<cmd>lua require 'dap'.continue()<cr>", "Continue" },
+    i = { "<cmd>lua require 'dap'.step_into()<cr>", "Step Into" },
+    o = { "<cmd>lua require 'dap'.step_over()<cr>", "Step Over" },
+    t = { "<cmd>lua require 'dap'.step_out()<cr>", "Step Out" },
+  },
+
   l = {
     name = "LSP",
     a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
