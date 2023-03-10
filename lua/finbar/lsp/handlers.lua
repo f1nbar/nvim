@@ -90,7 +90,7 @@ end
 --[[   vim.api.nvim_buf_set_keymap(bufnr, "n", "gi", "<cmd>telescope lsp_implementations<cr>", opts) ]]
 --[[   vim.api.nvim_buf_set_keymap(bufnr, "n", "gr", "<cmd>telescope lsp_references<cr>", opts) ]]
 --[[   vim.api.nvim_buf_set_keymap(bufnr, "n", "gl", "<cmd>lua vim.diagnostic.open_float()<cr>", opts) ]]
---[[   vim.cmd [[ command! format execute 'lua vim.lsp.buf.format({ async = true })' ]] ]]
+--[[   vim.cmd [[ command! format execute 'lua vim.lsp.buf.format({ async = true })' ]]
 --[[   vim.api.nvim_buf_set_keymap(bufnr, "n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<cr>", opts) ]]
 --[[   vim.api.nvim_buf_set_keymap(bufnr, "n", "<m-f>", "<cmd>format<cr>", opts) ]]
 --[[   vim.api.nvim_buf_set_keymap(bufnr, "n", "<m-a>", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts) ]]
