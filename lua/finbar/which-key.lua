@@ -96,7 +96,7 @@ local mappings = {
   ["F"] = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
   ["P"] = { "<cmd>Telescope projects<cr>", "Projects" },
 
-  g = {
+  G = {
     name = "Git",
     g = { "<cmd>lua _LAZYGIT_TOGGLE()<CR>", "Lazygit" },
     j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
@@ -137,6 +137,16 @@ local mappings = {
     i = { "<cmd>lua require 'dap'.step_into()<cr>", "Step Into" },
     o = { "<cmd>lua require 'dap'.step_over()<cr>", "Step Over" },
     t = { "<cmd>lua require 'dap'.step_out()<cr>", "Step Out" },
+  },
+
+  L = {
+    name = "Java",
+    o = { "<Cmd>lua require'jdtls'.organize_imports()<CR>", "Organize Imports" },
+    v = { "<Cmd>lua require('jdtls').extract_variable()<CR>", "Extract Variable" },
+    c = { "<Cmd>lua require('jdtls').extract_constant()<CR>", "Extract Constant" },
+    t = { "<Cmd>lua require'jdtls'.test_nearest_method()<CR>", "Test Method" },
+    T = { "<Cmd>lua require'jdtls'.test_class()<CR>", "Test Class" },
+    u = { "<Cmd>JdtUpdateConfig<CR>", "Update Config" },
   },
 
   l = {

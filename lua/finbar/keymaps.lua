@@ -25,9 +25,6 @@ keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 
--- NvimTree, <cr> is carriage-return "enter key"
-keymap("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
-
 -- Resize with arrows and control
 keymap("n", "<C-Up>", ":resize +2<CR>", opts)
 keymap("n", "<C-Down>", ":resize -2<CR>", opts)
@@ -65,6 +62,14 @@ keymap("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
 keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
 keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
+
+keymap("n", "gl", "<cmd>lua vim.diagnostic.open_float()<cr>", opts)
+keymap("n", "gd", "<cmd>telescope lsp_definitions<cr>", opts)
+keymap("n", "gd", "<cmd>telescope lsp_declarations<cr>", opts)
+keymap("n", "gi", "<cmd>telescope lsp_implementations<cr>", opts)
+keymap("n", "gr", "<cmd>telescope lsp_references<cr>", opts)
+keymap("n", "<m-a>", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
+keymap("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
 
 keymap("n", "<leader>d;", "<cmd>lua require 'harpoon.ui'.nav_file(4)<cr>", opts)
 
