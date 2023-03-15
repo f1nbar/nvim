@@ -17,7 +17,7 @@ require "finbar.lualine"
 require "finbar.alpha"
 require "finbar.project"
 require "finbar.dap"
-require "finbar.illuminate"
+--[[ require "finbar.illuminate" ]]
 require "finbar.diffview"
 require "finbar.harpoon"
 require "finbar.blamer"
