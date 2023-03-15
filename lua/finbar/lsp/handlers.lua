@@ -1,3 +1,4 @@
+-- Handling LSP for everything other than Java because it is a pain
 M = {}
 
 M.capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -23,20 +24,9 @@ M.setup = function()
   end
 
   local config = {
-    -- disable virtual text
+
     virtual_lines = false,
     virtual_text = false,
-    -- virtual_text = {
-    --   -- spacing = 7,
-    --   -- update_in_insert = false,
-    --   -- severity_sort = true,
-    --   -- prefix = "<-",
-    --   prefix = " ●",
-    --   source = "if_many", -- Or "always"
-    --   -- format = function(diag)
-    --   --   return diag.message .. "blah"
-    --   -- end,
-    -- },
 
     -- show signs
     signs = {
@@ -82,40 +72,11 @@ local function attach_navic(client, bufnr)
   navic.attach(client, bufnr)
 end
 
---[[ local function lsp_keymaps(bufnr) ]]
---[[   local opts = { noremap = true, silent = true } ]]
---[[   vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", "<cmd>telescope lsp_definitions<cr>", opts) ]]
---[[   vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", "<cmd>telescope lsp_declarations<cr>", opts) ]]
---[[   -- vim.api.nvim_buf_set_keymap(bufnr, "n", "k", "<cmd>lua vim.lsp.buf.hover()<cr>", opts) ]]
---[[   vim.api.nvim_buf_set_keymap(bufnr, "n", "gi", "<cmd>telescope lsp_implementations<cr>", opts) ]]
---[[   vim.api.nvim_buf_set_keymap(bufnr, "n", "gr", "<cmd>telescope lsp_references<cr>", opts) ]]
---[[   vim.api.nvim_buf_set_keymap(bufnr, "n", "gl", "<cmd>lua vim.diagnostic.open_float()<cr>", opts) ]]
---[[   vim.cmd [[ command! format execute 'lua vim.lsp.buf.format({ async = true })' ]]
---[[   vim.api.nvim_buf_set_keymap(bufnr, "n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<cr>", opts) ]]
---[[   vim.api.nvim_buf_set_keymap(bufnr, "n", "<m-f>", "<cmd>format<cr>", opts) ]]
---[[   vim.api.nvim_buf_set_keymap(bufnr, "n", "<m-a>", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts) ]]
---[[   -- vim.api.nvim_buf_set_keymap(bufnr, "n", "<m-s>", "<cmd>lua vim.lsp.buf.signature_help()<cr>", opts) ]]
---[[   vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<cr>", opts) ]]
---[[   -- vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts) ]]
---[[   -- vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>f", "<cmd>lua vim.diagnostic.open_float()<cr>", opts) ]]
---[[   -- vim.api.nvim_buf_set_keymap(bufnr, "n", "[d", '<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<cr>', opts) ]]
---[[   -- vim.api.nvim_buf_set_keymap(bufnr, "n", "]d", '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<cr>', opts) ]]
---[[   -- vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<cr>", opts) ]]
---[[ end ]]
-
 M.on_attach = function(client, bufnr)
-  lsp_keymaps(bufnr)
   attach_navic(client, bufnr)
 
   if client.name == "metals" then
     require'lspconfig'.metals.setup{}
-  end
-
-  if client.name == "jdt.ls" then
-    require("jdtls").add_commands(lsp_keymaps)
-    vim.lsp.codelens.refresh()
-    require("jdtls").setup_dap { hotcodereplace = "auto" }
-    require("jdtls.dap").setup_dap_main_class_configs()
   end
 end
 
