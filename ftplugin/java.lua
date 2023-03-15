@@ -14,7 +14,7 @@ local config = {
     bundles = bundles
   },
   cmd = {
-    '/usr/lib/jvm/zulu17/bin/java', -- or '/path/to/java17_or_newer/bin/java'
+    '/usr/lib/jvm/java-17-openjdk-amd64/bin/java', -- or '/path/to/java17_or_newer/bin/java'
             -- depends on if `java` is in your $PATH env variable and if it points to the right version.
     '-Declipse.application=org.eclipse.jdt.ls.core.id1',
     '-Dosgi.bundles.defaultStartLevel=4',
@@ -105,7 +105,8 @@ local config = {
   },
 }
 require('jdtls').start_or_attach(config)
-require('jdtls').add_commands()
+--[[ vim.lsp.codelens.refresh() ]]
+--[[ require('jdtls').add_commands() ]]
 --[[ require('jdtls').setup_dap() ]]
 --[[ require('jdtls.dap').setup_dap_main_class_configs() ]]
 
