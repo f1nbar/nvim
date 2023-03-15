@@ -11,16 +11,11 @@ require "finbar.gitsigns"
 require "finbar.comment"
 require "finbar.nvim-tree"
 require "finbar.which-key"
---[[ require "finbar.barbar ]]
 require "finbar.toggleterm"
 require "finbar.lualine"
 require "finbar.alpha"
 require "finbar.project"
 require "finbar.dap"
---[[ require "finbar.illuminate" ]]
 require "finbar.diffview"
 require "finbar.harpoon"
 require "finbar.blamer"
-require "finbar.nvim-jdtls"
-require "finbar.dap"
---[[ require "finbar.nvim-metals" ]]

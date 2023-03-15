@@ -16,7 +16,6 @@ vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
--- Install your plugins here
 require("lazy").setup ({
   "nvim-lua/popup.nvim", -- An implementation of the Popup API from vim in Neovim
   "nvim-lua/plenary.nvim", -- useful lua functions used ny lots of plugins
@@ -60,7 +59,7 @@ require("lazy").setup ({
    "windwp/nvim-autopairs", -- Autopairs, integrates with both cmp and treesitter
    "numToStr/Comment.nvim", -- Easily comment stuff with "gcc etc",
    "jose-elias-alvarez/null-ls.nvim",
-   "RRethy/vim-illuminate",
+   --[[ "RRethy/vim-illuminate", ]]
    "ThePrimeagen/harpoon",
    "chentoast/marks.nvim", -- Better marks
   -- NvimTree file tree
