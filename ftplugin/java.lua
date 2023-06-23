@@ -5,6 +5,19 @@ local bundles = {
   vim.fn.glob('/home/finbar/.config/nvim/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-0.44.0.jar', 1),
 };
 
+local on_attach = function(client, bufnr)
+  --[[ lsp.default_config.on_attach(client, bufnr) ]]
+  require('jdtls').start_or_attach(config)
+  vim.lsp.codelens.refresh()
+  require('jdtls').setup.add_commands()
+  require('jdtls').setup_dap()
+  require('jdtls.dap').setup_dap_main_class_configs()
+end
+
+local root_dir = vim.fs.dirname(vim.fs.find({'gradlew', '.git', 'mvnw', '.pom.xml'}, { upward = true })[1])
+local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
+local workspace_folder = "/home/finbar/.local/share/eclipse/workspace" .. project_name
+
 vim.list_extend(bundles, vim.split(vim.fn.glob('/home/finbar/.config/nvim/vscode-java-test/server/*.jar', 1), "\n"))
 
 local config = {
@@ -14,8 +27,7 @@ local config = {
     bundles = bundles
   },
   cmd = {
-    '/usr/lib/jvm/java-17-openjdk-amd64/bin/java', -- or '/path/to/java17_or_newer/bin/java'
-            -- depends on if `java` is in your $PATH env variable and if it points to the right version.
+    '/usr/lib/jvm/java-17-openjdk-amd64/bin/java',
     '-Declipse.application=org.eclipse.jdt.ls.core.id1',
     '-Dosgi.bundles.defaultStartLevel=4',
     '-Declipse.product=org.eclipse.jdt.ls.core.product',
@@ -28,12 +40,8 @@ local config = {
     '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
     '-jar', '/home/finbar/.config/nvim/jdtls/plugins/org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar',
     '-configuration', '/home/finbar/.config/nvim/jdtls/config_linux',
-    '-data', '/home/finbar/workspace/'
+    "-data", workspace_folder
   },
-
-  -- This is the default if not provided, you can remove it. Or adjust as needed.
-  -- One dedicated LSP server & client will be started per unique root_dir
-  root_dir = require('jdtls.setup').find_root({'.git', 'mvnw', 'gradlew','pom.xml'}),
 
     settings = {
     java = {
@@ -47,6 +55,12 @@ local config = {
       },
       configuration = {
         updateBuildConfiguration = "interactive",
+      runtimes = {
+        {
+          name = "JavaSE-11",
+          path = "/usr/lib/jvm/zulu11/",
+        },
+      },
       },
       maven = {
         downloadSources = true,
@@ -66,10 +80,10 @@ local config = {
         },
       },
       format = {
-        enabled = false,
-        -- settings = {
-        --   profile = "asdf"
-        -- }
+        enabled = true,
+          settings = {
+           profile = "google_java_format"
+         }
       },
     },
     signatureHelp = { enabled = true },
@@ -104,15 +118,12 @@ local config = {
     allow_incremental_sync = true,
   },
 }
-require('jdtls').start_or_attach(config)
---[[ vim.lsp.codelens.refresh() ]]
---[[ require('jdtls').add_commands() ]]
---[[ require('jdtls').setup_dap() ]]
---[[ require('jdtls.dap').setup_dap_main_class_configs() ]]
 
 vim.cmd "command! -buffer -nargs=? -complete=custom,v:lua.require'jdtls'._complete_compile JdtCompile lua require('jdtls').compile(<f-args>)"
 vim.cmd "command! -buffer -nargs=? -complete=custom,v:lua.require'jdtls'._complete_set_runtime JdtSetRuntime lua require('jdtls').set_runtime(<f-args>)"
 vim.cmd "command! -buffer JdtUpdateConfig lua require('jdtls').update_project_config()"
--- vim.cmd "command! -buffer JdtJol lua require('jdtls').jol()"
+vim.cmd "command! -buffer JdtJol lua require('jdtls').jol()"
 vim.cmd "command! -buffer JdtBytecode lua require('jdtls').javap()"
--- vim.cmd "command! -buffer JdtJshell lua require('jdtls').jshell()"
+vim.cmd "command! -buffer JdtJshell lua require('jdtls').jshell()"
+
+require('jdtls').start_or_attach(config)

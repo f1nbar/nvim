@@ -46,6 +46,7 @@ require("lazy").setup ({
    "neovim/nvim-lspconfig", -- enable LSP
   -- Telescope for finding files and live grep
    "nvim-telescope/telescope.nvim",
+   "debugloop/telescope-undo.nvim",
    "nvim-telescope/telescope-media-files.nvim",
   {"nvim-telescope/telescope-fzf-native.nvim", build="make"},
    "ahmedkhalf/project.nvim", -- find recently opened projects
@@ -60,7 +61,7 @@ require("lazy").setup ({
    "windwp/nvim-autopairs", -- Autopairs, integrates with both cmp and treesitter
    "numToStr/Comment.nvim", -- Easily comment stuff with "gcc etc",
    "jose-elias-alvarez/null-ls.nvim",
-   --[[ "RRethy/vim-illuminate", ]]
+   "RRethy/vim-illuminate",
    "ThePrimeagen/harpoon",
    "chentoast/marks.nvim", -- Better marks
   -- NvimTree file tree
