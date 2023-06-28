@@ -21,6 +21,7 @@ require("lazy").setup ({
   "nvim-lua/plenary.nvim", -- useful lua functions used ny lots of plugins
   -- Git
   "lewis6991/gitsigns.nvim", -- show git differences
+  "kdheepak/lazygit.nvim", dependencies = { "nvim-lua/plenary.nvim", },
   "APZelos/blamer.nvim", -- VS codelens similar blame
   "sindrets/diffview.nvim", -- diff view
   -- Terminal
