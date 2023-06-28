@@ -1,5 +1,3 @@
-local fn = vim.fn
-
 -- Automatically install lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -21,13 +19,16 @@ require("lazy").setup ({
   "nvim-lua/plenary.nvim", -- useful lua functions used ny lots of plugins
   -- Git
   "lewis6991/gitsigns.nvim", -- show git differences
-  "kdheepak/lazygit.nvim", dependencies = { "nvim-lua/plenary.nvim", },
+  { "kdheepak/lazygit.nvim", dependencies = "nvim-lua/plenary.nvim" }, 
   "tpope/vim-fugitive", -- Git commands
   -- Terminal
   "akinsho/toggleterm.nvim", -- terminals everywhere
   -- Theme
   "catppuccin/nvim",
+  "karb94/neoscroll.nvim", -- smooth scroll
   "nvim-lualine/lualine.nvim", -- statusline
+  { "kevinhwang91/nvim-ufo", dependencies = "kevinhwang91/promise-async" },  --nice looking folds
+  "lukas-reineke/indent-blankline.nvim",
   "goolord/alpha-nvim", --greeter
   -- cmp plugins
    "hrsh7th/nvim-cmp", -- The completion plugin
@@ -37,10 +38,9 @@ require("lazy").setup ({
    "saadparwaiz1/cmp_luasnip", -- snippet completions
    "hrsh7th/cmp-nvim-lsp", -- lsp completions
    "hrsh7th/cmp-nvim-lua", -- completions for neovim lua API
-   "scalameta/nvim-metals", dependencies= "nvim-lua/plenary.nvim", -- Scala LSP
+   { "scalameta/nvim-metals", dependencies = "nvim-lua/plenary.nvim" }, -- Scala LSP
  -- Snippets
-   "L3MON4D3/LuaSnip", --snippet engine
-   "rafamadriz/friendly-snippets", -- a bunch of snippets to use
+   { "L3MON4D3/LuaSnip", dependencies = "rafamadriz/friendly-snippets" }, --snippet engine
   -- LSP
    "williamboman/nvim-lsp-installer", -- simple to use language server installer
    "neovim/nvim-lspconfig", -- enable LSP
@@ -48,7 +48,7 @@ require("lazy").setup ({
    "nvim-telescope/telescope.nvim",
    "debugloop/telescope-undo.nvim",
    "nvim-telescope/telescope-media-files.nvim",
-  {"nvim-telescope/telescope-fzf-native.nvim", build="make"},
+   { "nvim-telescope/telescope-fzf-native.nvim", build="make" },
    "ahmedkhalf/project.nvim", -- find recently opened projects
 
   -- Syntax highlighting with comments
