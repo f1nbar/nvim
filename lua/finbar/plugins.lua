@@ -84,4 +84,8 @@ require("lazy").setup ({
 
   -- Zen 
    "folke/zen-mode.nvim",
+
+  -- Runner
+   { "michaelb/sniprun", build="sh ./install.sh" },
+
 })
