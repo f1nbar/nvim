@@ -22,8 +22,9 @@ require("lazy").setup ({
   -- Git
   "lewis6991/gitsigns.nvim", -- show git differences
   "kdheepak/lazygit.nvim", dependencies = { "nvim-lua/plenary.nvim", },
+  "tpope/vim-fugitive",
   "APZelos/blamer.nvim", -- VS codelens similar blame
-  "sindrets/diffview.nvim", -- diff view
+  --[[ "sindrets/diffview.nvim", -- diff view ]] 
   -- Terminal
   "akinsho/toggleterm.nvim", -- terminals everywhere
   -- Theme
