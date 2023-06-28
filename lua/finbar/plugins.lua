@@ -22,9 +22,7 @@ require("lazy").setup ({
   -- Git
   "lewis6991/gitsigns.nvim", -- show git differences
   "kdheepak/lazygit.nvim", dependencies = { "nvim-lua/plenary.nvim", },
-  "tpope/vim-fugitive",
-  "APZelos/blamer.nvim", -- VS codelens similar blame
-  --[[ "sindrets/diffview.nvim", -- diff view ]] 
+  "tpope/vim-fugitive", -- Git commands
   -- Terminal
   "akinsho/toggleterm.nvim", -- terminals everywhere
   -- Theme
@@ -39,7 +37,7 @@ require("lazy").setup ({
    "saadparwaiz1/cmp_luasnip", -- snippet completions
    "hrsh7th/cmp-nvim-lsp", -- lsp completions
    "hrsh7th/cmp-nvim-lua", -- completions for neovim lua API
-   "scalameta/nvim-metals", dependencies= "nvim-lua/plenary.nvim",
+   "scalameta/nvim-metals", dependencies= "nvim-lua/plenary.nvim", -- Scala LSP
  -- Snippets
    "L3MON4D3/LuaSnip", --snippet engine
    "rafamadriz/friendly-snippets", -- a bunch of snippets to use

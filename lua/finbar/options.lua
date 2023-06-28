@@ -5,7 +5,6 @@ local options = {
 	number = true,					-- line number use with relative number for hybrid 
 	relativenumber = true, 				-- relative numbers
 	clipboard = "unnamedplus", 			-- use sys clipboard 
-	termguicolors = true, 				-- term colours
 	cmdheight = 2, 					-- may change back, more space for cmd
 	completeopt = { "menuone", "noselect" }, 	-- cmp options
 	conceallevel = 0, 			-- so that `` is visible in markdown files
@@ -34,7 +33,6 @@ local options = {
 	sidescrolloff = 8 				-- centers cursor
 }
 
-vim.cmd "set whichwrap+=<,>,[,],h,l" 		-- treat words with commas etc as single words
 vim.cmd "cmap w!! w !sudo tee %" 		-- you can't stop me!!
 
 for k, v in pairs(options) do
