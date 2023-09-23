@@ -17,6 +17,11 @@ vim.g.maplocalleader = " "
 --   visual_block_mode = "x",
 --   term_mode = "t",
 --   command_mode = "c",
+--
+
+-- Movement is now centered
+keymap("n", "<C-d>", "<C-d>zz", opts) 
+keymap("n", "<C-u>", "<C-u>zz", opts)
 
 -- Normal --
 -- Better window navigation ctrl + hjkl
@@ -69,7 +74,6 @@ keymap("n", "gd", "<cmd>telescope lsp_declarations<cr>", opts)
 keymap("n", "gi", "<cmd>telescope lsp_implementations<cr>", opts)
 keymap("n", "gr", "<cmd>telescope lsp_references<cr>", opts)
 keymap("n", "<m-a>", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
-keymap("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
 
 keymap("n", "<leader>d;", "<cmd>lua require 'harpoon.ui'.nav_file(4)<cr>", opts)
 

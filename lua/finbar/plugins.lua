@@ -25,10 +25,7 @@ require("lazy").setup ({
   "akinsho/toggleterm.nvim", -- terminals everywhere
   -- Theme
   "catppuccin/nvim",
-  "karb94/neoscroll.nvim", -- smooth scroll
-  "nvim-lualine/lualine.nvim", -- statusline
-  { "kevinhwang91/nvim-ufo", dependencies = "kevinhwang91/promise-async" },  --nice looking folds
-  "lukas-reineke/indent-blankline.nvim",
+  "nvim-lualine/lualine.nvim",
   "goolord/alpha-nvim", --greeter
   -- cmp plugins
    "hrsh7th/nvim-cmp", -- The completion plugin
@@ -56,7 +53,8 @@ require("lazy").setup ({
     "nvim-treesitter/nvim-treesitter",
     build=":TSUpdate"
   },
-
+   "nvim-treesitter/nvim-treesitter-textobjects",
+   "nvim-treesitter/refactor",
    "JoosepAlviste/nvim-ts-context-commentstring", -- Smarter comments with treesitter intergration
    "windwp/nvim-autopairs", -- Autopairs, integrates with both cmp and treesitter
    "numToStr/Comment.nvim", -- Easily comment stuff with "gcc etc",
@@ -64,28 +62,13 @@ require("lazy").setup ({
    "RRethy/vim-illuminate",
    "ThePrimeagen/harpoon",
    "chentoast/marks.nvim", -- Better marks
-  -- NvimTree file tree
-   "kyazdani42/nvim-web-devicons",
-   "kyazdani42/nvim-tree.lua",
-
-  -- Markdown Preview //:Glow to Preview
-   "ellisonleao/glow.nvim",
-
   -- which-key
    "folke/which-key.nvim",
-
 -- DAP for debugging
    "mfussenegger/nvim-dap",
    "rcarriga/nvim-dap-ui",
    "ravenxrz/DAPInstall.nvim",
-
   -- Java
    "mfussenegger/nvim-jdtls",
-
-  -- Zen 
-   "folke/zen-mode.nvim",
-
-  -- Runner
-   { "michaelb/sniprun", build="sh ./install.sh" },
-
-})
+    "nvim-orgmode/orgmode"
+ })

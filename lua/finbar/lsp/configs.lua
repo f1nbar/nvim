@@ -5,7 +5,7 @@ end
 
 local lspconfig = require("lspconfig")
 
-local servers = { "lemminx", "metals", "groovyls"}
+local servers = { "lemminx", "metals", "groovyls", "gopls", "rust_analyzer", "kotlin_language_server"}
 
 lsp_installer.setup({
 	ensure_installed = servers,
