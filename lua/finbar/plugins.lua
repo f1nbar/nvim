@@ -25,6 +25,7 @@ require("lazy").setup ({
   "akinsho/toggleterm.nvim", -- terminals everywhere
   -- Theme
   "catppuccin/nvim",
+  "stevearc/oil.nvim", -- files
   "nvim-lualine/lualine.nvim",
   "goolord/alpha-nvim", --greeter
   -- cmp plugins
@@ -70,5 +71,4 @@ require("lazy").setup ({
    "ravenxrz/DAPInstall.nvim",
   -- Java
    "mfussenegger/nvim-jdtls",
-    "nvim-orgmode/orgmode"
  })
