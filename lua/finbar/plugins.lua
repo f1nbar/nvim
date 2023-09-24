@@ -66,7 +66,13 @@ require("lazy").setup ({
    "chentoast/marks.nvim", -- Better marks
   -- NvimTree file tree
    "kyazdani42/nvim-web-devicons",
-   "kyazdani42/nvim-tree.lua",
+    {
+        "kyazdani42/nvim-tree.lua",
+        config = function()
+            require("nvim-surround").setup({
+            })
+        end
+    },
 
   -- Markdown Preview //:Glow to Preview
    "ellisonleao/glow.nvim",
@@ -85,7 +91,18 @@ require("lazy").setup ({
   -- Zen 
    "folke/zen-mode.nvim",
 
-  -- Runner
-   { "michaelb/sniprun", build="sh ./install.sh" },
+  {
+     "m4xshen/hardtime.nvim", dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
+     opts = {}
+  },
+
+  {
+    "kylechui/nvim-surround",
+     event = "VeryLazy",
+    config = function()
+        require("nvim-surround").setup({
+	})
+     end
+  }
 
 })

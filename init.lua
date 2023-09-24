@@ -21,4 +21,5 @@ require "finbar.null-ls"
 require "finbar.neoscroll"
 require "finbar.nvim-ufo"
 require "finbar.indent_blankline"
-require "finbar.sniprun"
+require'nvim-tree'.setup {}
+--[[ require "finbar.sniprun" ]]
