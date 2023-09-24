@@ -26,6 +26,7 @@ require("lazy").setup ({
   -- Theme
   "catppuccin/nvim",
   "stevearc/oil.nvim", -- files
+  "nvim-tree/nvim-web-devicons",
   "nvim-lualine/lualine.nvim",
   "goolord/alpha-nvim", --greeter
   -- cmp plugins
