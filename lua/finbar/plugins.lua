@@ -44,6 +44,7 @@ require("lazy").setup ({
    "williamboman/nvim-lsp-installer", -- simple to use language server installer
    "neovim/nvim-lspconfig", -- enable LSP
    "hinell/lsp-timeout.nvim", -- save ram
+   "luckasRanarison/clear-action.nvim", -- TODO do I want this?
   -- Telescope for finding files and live grep
    "nvim-telescope/telescope.nvim",
    "debugloop/telescope-undo.nvim",
