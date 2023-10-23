@@ -72,4 +72,8 @@ require("lazy").setup ({
    "ravenxrz/DAPInstall.nvim",
   -- Java
    "mfussenegger/nvim-jdtls",
+    {
+        'stevearc/overseer.nvim',
+        opts = {},
+    },
  })
