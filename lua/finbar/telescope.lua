@@ -8,6 +8,7 @@ telescope.load_extension("fzf")
 telescope.load_extension("harpoon")
 telescope.load_extension("undo")
 telescope.load_extension("dap")
+telescope.load_extension("ui-select")
 
 local actions = require "telescope.actions"
 
