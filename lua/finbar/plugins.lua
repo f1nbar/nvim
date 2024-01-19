@@ -43,7 +43,7 @@ require("lazy").setup ({
   -- LSP
    "williamboman/nvim-lsp-installer", -- simple to use language server installer
    "neovim/nvim-lspconfig", -- enable LSP
-   "hinell/lsp-timeout.nvim", -- save ram
+   --[[ "hinell/lsp-timeout.nvim", -- save ram ]]
    "luckasRanarison/clear-action.nvim", -- TODO do I want this?
   -- Telescope for finding files and live grep
    "nvim-telescope/telescope.nvim",
@@ -78,4 +78,13 @@ require("lazy").setup ({
         'stevearc/overseer.nvim',
         opts = {},
     },
+    "zbirenbaum/copilot.lua",
+    {
+        "zbirenbaum/copilot-cmp",
+        config = function ()
+            require("copilot_cmp").setup()
+        end
+    }
+
+
  })

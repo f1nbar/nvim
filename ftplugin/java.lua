@@ -7,16 +7,16 @@ local bundles = {
 
 local on_attach = function(client, bufnr)
   --[[ lsp.default_config.on_attach(client, bufnr) ]]
-  require('jdtls').start_or_attach(config)
+  --[[ require('jdtls').start_or_attach(config) ]]
   vim.lsp.codelens.refresh()
   require('jdtls').setup.add_commands()
-  require('jdtls').setup_dap()
+  --[[ require('jdtls').setup_dap() ]]
   require('jdtls.dap').setup_dap_main_class_configs()
 end
 
 local root_dir = vim.fs.dirname(vim.fs.find({'gradlew', '.git', 'mvnw', '.pom.xml'}, { upward = true })[1])
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
-local workspace_folder = "/home/finbar/.local/share/eclipse/workspace" .. project_name
+local workspace_folder = "/home/finbar/.local/share/eclipse/workspace/" .. project_name
 
 vim.list_extend(bundles, vim.split(vim.fn.glob('/home/finbar/.config/nvim/vscode-java-test/server/*.jar', 1), "\n"))
 

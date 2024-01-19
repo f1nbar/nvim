@@ -141,7 +141,7 @@ local mappings = {
     t = { "<cmd>lua require 'dap'.step_out()<cr>", "Step Out" },
   },
 
-  L = {
+  j = {
     name = "Java",
     o = { "<Cmd>lua require'jdtls'.organize_imports()<CR>", "Organize Imports" },
     v = { "<Cmd>lua require('jdtls').extract_variable()<CR>", "Extract Variable" },
@@ -149,6 +149,7 @@ local mappings = {
     t = { "<Cmd>lua require'jdtls'.test_nearest_method()<CR>", "Test Method" },
     T = { "<Cmd>lua require'jdtls'.test_class()<CR>", "Test Class" },
     u = { "<Cmd>JdtUpdateConfig<CR>", "Update Config" },
+    m = { "<Cmd>TermExec cmd='mvn clean install'<CR>", "Maven Clean Install" },
   },
 
   l = {

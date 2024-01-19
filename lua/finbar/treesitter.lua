@@ -2,6 +2,7 @@ local status_ok, configs = pcall(require, "nvim-treesitter.configs")
 if not status_ok then
   return
 end
+require('ts_context_commentstring').setup()
 
 configs.setup {
     ensure_installed = {"java", "scala", "lua", "python", "rust", "go", "c"}, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
@@ -17,10 +18,10 @@ configs.setup {
         additional_vim_regex_highlighting = true,
     },
     indent = { enable = true, disable = { "yaml" } },
-    context_commentstring = {
-        enable = true,
-        enable_autocmd = false,
-  },
+  --[[   context_commentstring = { ]]
+  --[[       enable = true, ]]
+  --[[       enable_autocmd = false, ]]
+  --[[ }, ]]
     refactor = {
         smart_rename = {
             highlight_current_scope = { enable = true },
