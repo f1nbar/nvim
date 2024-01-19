@@ -139,6 +139,8 @@ local mappings = {
     i = { "<cmd>lua require 'dap'.step_into()<cr>", "Step Into" },
     o = { "<cmd>lua require 'dap'.step_over()<cr>", "Step Over" },
     t = { "<cmd>lua require 'dap'.step_out()<cr>", "Step Out" },
+    d = { "<cmd>lua require 'dap'.run_java_test_method()<cr>", "Test Test" },
+    r = { "<cmd>lua require 'dap'.repl.open()<cr>", "REPL" },
   },
 
   j = {

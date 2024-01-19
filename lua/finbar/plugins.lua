@@ -48,6 +48,7 @@ require("lazy").setup ({
   -- Telescope for finding files and live grep
    "nvim-telescope/telescope.nvim",
    "debugloop/telescope-undo.nvim",
+   "nvim-telescope/telescope-dap.nvim",
    "nvim-telescope/telescope-media-files.nvim",
    { "nvim-telescope/telescope-fzf-native.nvim", build="make" },
    "ahmedkhalf/project.nvim", -- find recently opened projects
