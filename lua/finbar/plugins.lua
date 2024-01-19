@@ -25,8 +25,9 @@ require("lazy").setup ({
   "akinsho/toggleterm.nvim", -- terminals everywhere
   -- Theme
   "catppuccin/nvim",
-  "stevearc/oil.nvim", -- files
-  "nvim-tree/nvim-web-devicons",
+    --[[ "stevearc/oil.nvim", -- files ]]
+  "kyazdani42/nvim-web-devicons",
+{"nvim-neo-tree/neo-tree.nvim", dependencies = "MunifTanjim/nui.nvim"},
   "nvim-lualine/lualine.nvim",
   "goolord/alpha-nvim", --greeter
   -- cmp plugins

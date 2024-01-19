@@ -15,7 +15,7 @@ local check_backspace = function()
   return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
 end
 
---   פּ ﯟ   some other good icons
+--   פּ ﯟ   some other good icons
 local kind_icons = {
   Text = "",
   Method = "m",
@@ -42,7 +42,7 @@ local kind_icons = {
   Event = "",
   Operator = "",
   TypeParameter = "",
-  CmpItemKindCopilot = "",
+  Copilot= "",
 }
 -- find more here: https://www.nerdfonts.com/cheat-sheet
 --

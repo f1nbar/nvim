@@ -6,12 +6,9 @@ local bundles = {
 };
 
 local on_attach = function(client, bufnr)
-  --[[ lsp.default_config.on_attach(client, bufnr) ]]
-  --[[ require('jdtls').start_or_attach(config) ]]
   vim.lsp.codelens.refresh()
   require('jdtls').setup.add_commands()
-  --[[ require('jdtls').setup_dap() ]]
-  require('jdtls.dap').setup_dap_main_class_configs()
+  require('jdtls.dap').setup_dap_main_class_configs( {hotcodereplace = 'auto'})
 end
 
 local root_dir = vim.fs.dirname(vim.fs.find({'gradlew', '.git', 'mvnw', '.pom.xml'}, { upward = true })[1])
