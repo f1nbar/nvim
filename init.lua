@@ -17,7 +17,6 @@ require "finbar.alpha"
 require "finbar.project"
 require "finbar.harpoon"
 require "finbar.null-ls"
---[[ require "finbar.oil" ]]
 require "finbar.neotree"
 require "finbar.overseer"
 require "finbar.copilot"

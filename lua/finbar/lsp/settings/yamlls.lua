@@ -1,8 +1,17 @@
-
 return {
-  yaml = {
-    schemaStore = {
-      enable = true
+  on_attach = on_attach,
+  settings = {
+    yaml = {
+      schemas = {
+        {
+          fileMatch = { ".yaml", ".yml" },
+        }
+      },
+      format = {
+        enable = true,
+      },
+      validate = true,
+      completion = true
     }
   }
 }

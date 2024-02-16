@@ -18,14 +18,12 @@ require("lazy").setup ({
   "nvim-lua/popup.nvim", -- An implementation of the Popup API from vim in Neovim
   "nvim-lua/plenary.nvim", -- useful lua functions used ny lots of plugins
   -- Git
-  "lewis6991/gitsigns.nvim", -- show git differences
+  "lewis6991/gitsigns.nvim", -- show git diff
   { "kdheepak/lazygit.nvim", dependencies = "nvim-lua/plenary.nvim" }, 
   "tpope/vim-fugitive", -- Git commands
-  -- Terminal
   "akinsho/toggleterm.nvim", -- terminals everywhere
   -- Theme
   "catppuccin/nvim",
-    --[[ "stevearc/oil.nvim", -- files ]]
   "kyazdani42/nvim-web-devicons",
 {"nvim-neo-tree/neo-tree.nvim", dependencies = "MunifTanjim/nui.nvim"},
   "nvim-lualine/lualine.nvim",
@@ -44,8 +42,7 @@ require("lazy").setup ({
   -- LSP
    "williamboman/nvim-lsp-installer", -- simple to use language server installer
    "neovim/nvim-lspconfig", -- enable LSP
-   --[[ "hinell/lsp-timeout.nvim", -- save ram ]]
-   "luckasRanarison/clear-action.nvim", -- TODO do I want this?
+  { "ellisonleao/glow.nvim", config = true, cmd = "Glow" }, -- markdown preview
   -- Telescope for finding files and live grep
    "nvim-telescope/telescope.nvim",
    "debugloop/telescope-undo.nvim",
@@ -54,8 +51,6 @@ require("lazy").setup ({
    "nvim-telescope/telescope-ui-select.nvim",
    { "nvim-telescope/telescope-fzf-native.nvim", build="make" },
    "ahmedkhalf/project.nvim", -- find recently opened projects
-
-  -- Syntax highlighting with comments
   {
     "nvim-treesitter/nvim-treesitter",
     build=":TSUpdate"
@@ -88,6 +83,5 @@ require("lazy").setup ({
             require("copilot_cmp").setup()
         end
     }
-
 
  })

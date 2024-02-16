@@ -78,6 +78,30 @@ M.on_attach = function(client, bufnr)
   if client.name == "metals" then
     require'lspconfig'.metals.setup{}
   end
+
+  if client.name == "ltex" then
+    require "finbar.lsp.settings.ltex"
+  end
+
+  if client.name == "lemminx" then
+    require'lspconfig'.lemminx.setup{}
+  end
+
+  if client.name == "bashls" then
+    require'lspconfig'.bashls.setup{}
+  end
+
+  if client.name == "tssserver" then
+    require'lspconfig'.tsserver.setup{}
+  end
+
+  if client.name == "yamlls" then
+    require "finbar.lsp.settings.yamlls"
+  end
+
+  if client.name == "tflint" then
+    require'lspconfig'.tflint.setup{}
+  end
 end
 
 function M.enable_format_on_save()
