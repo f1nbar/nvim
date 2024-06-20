@@ -79,7 +79,7 @@ local opts = {
 }
 
 local mappings = {
-  ["/"] = { "<cmd>lua require(\"Comment.api\").toggle_current_linewise()<CR>", "Comment" },
+  ["/"] = { "<cmd>lua require(\"Comment.api\").toggle_current_linewise()<CR>", "Comment" }, 
   ["b"] = {
     "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
     "Buffers",
@@ -88,7 +88,7 @@ local mappings = {
   ["e"] = { "<cmd>Neotree toggle<CR>", "Explorer" },
   ["w"] = { "<cmd>w!<CR>", "Save" },
   ["q"] = { "<cmd>q!<CR>", "Quit" },
-  ["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
+  ["c"] = { "<cmd>bdelete!<CR>", "Close Buffer" },
   ["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
   ["f"] = {
     "<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<cr>",
@@ -97,6 +97,7 @@ local mappings = {
 
   ["F"] = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
   ["P"] = { "<cmd>Telescope projects<cr>", "Projects" },
+  ["T"] = { "<cmd>TroubleToggle<cr>", "Trouble" },
   --[[ ["r"] = { "<cmd>SnipRun<cr>", "Run" }, ]] -- add runner
 
   g = {
@@ -115,12 +116,22 @@ local mappings = {
     },
     o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
     b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
+    B = { "<cmd>lua require 'gitsigns'.blame()<cr>", "Git blame" },
     c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
     d = {
-      "<cmd>Gitsigns diffthis HEAD<cr>",
+      "<cmd>DiffviewOpen<cr>",
       "Diff",
     },
   },
+
+ C = {
+        name = "Copilot",
+        c = { "<cmd>CopilotChatToggle<cr>", "Chat" },
+        o = { "<cmd>CopilotChatOptimize<cr>", "Optimize" },
+        f = { "<cmd>CopilotChatFix<cr>", "Fix" },
+        e = { "<cmd>CopilotChatExplain<cr>", "Explain" },
+        d = { "<cmd>CopilotChatDocs<cr>", "Docs" },
+    },
 
   d = {
     name = "Harpoon",
@@ -211,7 +222,16 @@ local vopts = {
   nowait = true, -- use `nowait` when creating keymaps
 }
 local vmappings = {
-  ["/"] = { "<ESC><CMD>lua require(\"Comment.api\").toggle_linewise_op(vim.fn.visualmode())<CR>", "Comment" },
+    ["/"] = { "<ESC><CMD>lua require(\"Comment.api\").toggle_linewise_op(vim.fn.visualmode())<CR>", "Comment" },
+    C = {
+        name = "Copilot",
+        c = { "<cmd>CopilotChatToggle<cr>", "Chat" },
+        o = { "<cmd>CopilotChatOptimize<cr>", "Optimize" },
+        d = { "<cmd>CopilotChatDocs<cr>", "Docs" },
+        f = { "<cmd>CopilotChatFix<cr>", "Fix" },
+        e = { "<cmd>CopilotChatExplain<cr>", "Explain" },
+    },
+    f = { "<cmd>lua vim.lsp.buf.format()<cr>", "Format" },
 }
 
 which_key.setup(setup)

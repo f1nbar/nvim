@@ -18,7 +18,8 @@ require("lazy").setup ({
   "nvim-lua/popup.nvim", -- An implementation of the Popup API from vim in Neovim
   "nvim-lua/plenary.nvim", -- useful lua functions used ny lots of plugins
   -- Git
-  "lewis6991/gitsigns.nvim", -- show git diff
+  "lewis6991/gitsigns.nvim", -- git tools 
+  "sindrets/diffview.nvim", -- git diff TODO do I want this?
   { "kdheepak/lazygit.nvim", dependencies = "nvim-lua/plenary.nvim" }, 
   "tpope/vim-fugitive", -- Git commands
   "akinsho/toggleterm.nvim", -- terminals everywhere
@@ -40,12 +41,14 @@ require("lazy").setup ({
  -- Snippets
    { "L3MON4D3/LuaSnip", dependencies = "rafamadriz/friendly-snippets" }, --snippet engine
   -- LSP
-   "williamboman/nvim-lsp-installer", -- simple to use language server installer
+   "williamboman/mason.nvim", -- simple to use language server installer
+   "williamboman/mason-lspconfig.nvim",
    "neovim/nvim-lspconfig", -- enable LSP
   { "ellisonleao/glow.nvim", config = true, cmd = "Glow" }, -- markdown preview
   -- Telescope for finding files and live grep
    "nvim-telescope/telescope.nvim",
    "debugloop/telescope-undo.nvim",
+   "folke/trouble.nvim",
    "nvim-telescope/telescope-dap.nvim",
    "nvim-telescope/telescope-media-files.nvim",
    "nvim-telescope/telescope-ui-select.nvim",
@@ -59,7 +62,6 @@ require("lazy").setup ({
    "nvim-treesitter/refactor",
    "JoosepAlviste/nvim-ts-context-commentstring", -- Smarter comments with treesitter intergration
    "windwp/nvim-autopairs", -- Autopairs, integrates with both cmp and treesitter
-   "numToStr/Comment.nvim", -- Easily comment stuff with "gcc etc",
    "nvimtools/none-ls.nvim",
    "RRethy/vim-illuminate",
    "ThePrimeagen/harpoon",
@@ -69,6 +71,7 @@ require("lazy").setup ({
 -- DAP for debugging
    "mfussenegger/nvim-dap",
    "rcarriga/nvim-dap-ui",
+   "nvim-neotest/nvim-nio", -- async dep
    "ravenxrz/DAPInstall.nvim",
   -- Java
    "mfussenegger/nvim-jdtls",
@@ -82,6 +85,11 @@ require("lazy").setup ({
         config = function ()
             require("copilot_cmp").setup()
         end
-    }
-
+    },
+  {
+    "CopilotC-Nvim/CopilotChat.nvim",
+    branch = "canary",
+  },
+  -- { "mistricky/codesnap.nvim", build = "make" },
+   "alexghergh/nvim-tmux-navigation"
  })

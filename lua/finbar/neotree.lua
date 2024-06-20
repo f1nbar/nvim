@@ -3,7 +3,6 @@ require("neo-tree").setup({
         popup_border_style = "rounded",
         enable_git_status = true,
         enable_diagnostics = true,
-        enable_normal_mode_for_inputs = false, -- Enable normal mode for input dialogs.
         open_files_do_not_replace_types = { "terminal", "trouble", "qf" }, -- when opening files, do not use windows containing these filetypes or buftypes
         sort_case_insensitive = false, -- used when sorting files and directories in the tree
         sort_function = nil , -- use a custom function for sorting files and directories in the tree 
@@ -116,11 +115,11 @@ require("neo-tree").setup({
             -- ["<cr>"] = "open_drop",
             -- ["t"] = "open_tab_drop",
             ["w"] = "open_with_window_picker",
-            --["P"] = "toggle_preview", -- enter preview mode, which shows the current node without focusing
+            ["P"] = "toggle_preview", -- enter preview mode, which shows the current node without focusing
             ["C"] = "close_node",
             -- ['C'] = 'close_all_subnodes',
             ["z"] = "close_all_nodes",
-            --["Z"] = "expand_all_nodes",
+            ["Z"] = "expand_all_nodes",
             ["a"] = { 
               "add",
               -- this command supports BASH style brace expansion ("x{a,b,c}" -> xa,xb,xc). see `:h neo-tree-file-actions` for details
@@ -155,9 +154,9 @@ require("neo-tree").setup({
         filesystem = {
           filtered_items = {
             visible = false, -- when true, they will just be displayed differently than normal items
-            hide_dotfiles = true,
+            hide_dotfiles = false,
             hide_gitignored = true,
-            hide_hidden = true, -- only works on Windows for hidden files/directories
+            hide_hidden = false, -- only works on Windows for hidden files/directories
             hide_by_name = {
               --"node_modules"
             },

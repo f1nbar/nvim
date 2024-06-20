@@ -25,10 +25,12 @@ keymap("n", "<C-u>", "<C-u>zz", opts)
 
 -- Normal --
 -- Better window navigation ctrl + hjkl
-keymap("n", "<C-h>", "<C-w>h", opts)
-keymap("n", "<C-j>", "<C-w>j", opts)
-keymap("n", "<C-k>", "<C-w>k", opts)
-keymap("n", "<C-l>", "<C-w>l", opts)
+-- keymap("n", "<C-h>", nvim_tmux_nav.NvimTmuxNavigateLeft, opts)
+-- keymap("n", "<C-j>", nvim_tmux_nav.NvimTmuxNavigateDown, opts)
+-- keymap("n", "<C-k>", nvim_tmux_nav.NvimTmuxNavigateUp, opts)
+-- keymap("n", "<C-l>", nvim_tmux_nav.NvimTmuxNavigateRight, opts)
+-- keymap("n", "<C-//>", nvim_tmux_nav.NvimTmuxNavigateLastActive, opts)
+-- keymap("n", "<C-Space>", nvim_tmux_nav.NvimTmuxNavigateNext, opts)
 
 -- Resize with arrows and control
 keymap("n", "<C-Up>", ":resize +2<CR>", opts)
@@ -66,7 +68,7 @@ keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 keymap("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
 keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
 keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
-keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
+-- keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 
 keymap("n", "gl", "<cmd>lua vim.diagnostic.open_float()<cr>", opts)
 keymap("n", "gd", "<cmd>Telescope lsp_definitions<cr>", opts)

@@ -91,6 +91,10 @@ M.on_attach = function(client, bufnr)
     require'lspconfig'.bashls.setup{}
   end
 
+  if client.name == "pylsp" then
+    require'lspconfig'.pylsp.setup{}
+  end
+
   if client.name == "tssserver" then
     require'lspconfig'.tsserver.setup{}
   end
