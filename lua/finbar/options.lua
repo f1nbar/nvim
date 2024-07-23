@@ -34,6 +34,7 @@ local options = {
 }
 
 vim.cmd "cmap w!! w !sudo tee %" 		-- you can't stop me!!
+vim.cmd "command! BufOnly execute '%bdelete|edit#|bdelete#'" -- Delete all buffers but current
 
 for k, v in pairs(options) do
 	vim.opt[k] = v

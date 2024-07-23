@@ -19,7 +19,6 @@ require("lazy").setup ({
   "nvim-lua/plenary.nvim", -- useful lua functions used ny lots of plugins
   -- Git
   "lewis6991/gitsigns.nvim", -- git tools 
-  "sindrets/diffview.nvim", -- git diff TODO do I want this?
   { "kdheepak/lazygit.nvim", dependencies = "nvim-lua/plenary.nvim" }, 
   "tpope/vim-fugitive", -- Git commands
   "akinsho/toggleterm.nvim", -- terminals everywhere
@@ -48,7 +47,6 @@ require("lazy").setup ({
   -- Telescope for finding files and live grep
    "nvim-telescope/telescope.nvim",
    "debugloop/telescope-undo.nvim",
-   "folke/trouble.nvim",
    "nvim-telescope/telescope-dap.nvim",
    "nvim-telescope/telescope-media-files.nvim",
    "nvim-telescope/telescope-ui-select.nvim",
@@ -65,14 +63,13 @@ require("lazy").setup ({
    "nvimtools/none-ls.nvim",
    "RRethy/vim-illuminate",
    "ThePrimeagen/harpoon",
-   "chentoast/marks.nvim", -- Better marks
   -- which-key
    "folke/which-key.nvim",
 -- DAP for debugging
    "mfussenegger/nvim-dap",
    "rcarriga/nvim-dap-ui",
    "nvim-neotest/nvim-nio", -- async dep
-   "ravenxrz/DAPInstall.nvim",
+   -- "ravenxrz/DAPInstall.nvim",
   -- Java
    "mfussenegger/nvim-jdtls",
     {

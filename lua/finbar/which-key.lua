@@ -97,7 +97,7 @@ local mappings = {
 
   ["F"] = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
   ["P"] = { "<cmd>Telescope projects<cr>", "Projects" },
-  ["T"] = { "<cmd>TroubleToggle<cr>", "Trouble" },
+  -- ["T"] = { "<cmd>TroubleToggle<cr>", "Trouble" },
   --[[ ["r"] = { "<cmd>SnipRun<cr>", "Run" }, ]] -- add runner
 
   g = {

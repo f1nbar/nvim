@@ -103,9 +103,9 @@ M.on_attach = function(client, bufnr)
     require "finbar.lsp.settings.yamlls"
   end
 
-  if client.name == "tflint" then
-    require'lspconfig'.tflint.setup{}
-  end
+  -- if client.name == "tflint" then
+  --   require'lspconfig'.tflint.setup{}
+  -- end
 end
 
 function M.enable_format_on_save()
