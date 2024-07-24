@@ -97,8 +97,6 @@ local mappings = {
 
   ["F"] = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
   ["P"] = { "<cmd>Telescope projects<cr>", "Projects" },
-  -- ["T"] = { "<cmd>TroubleToggle<cr>", "Trouble" },
-  --[[ ["r"] = { "<cmd>SnipRun<cr>", "Run" }, ]] -- add runner
 
   g = {
     name = "Git",
@@ -157,12 +155,11 @@ local mappings = {
 
   j = {
     name = "Java",
-    o = { "<Cmd>lua require'jdtls'.organize_imports()<CR>", "Organize Imports" },
-    v = { "<Cmd>lua require('jdtls').extract_variable()<CR>", "Extract Variable" },
-    c = { "<Cmd>lua require('jdtls').extract_constant()<CR>", "Extract Constant" },
-    t = { "<Cmd>lua require'jdtls'.test_nearest_method()<CR>", "Test Method" },
-    T = { "<Cmd>lua require'jdtls'.test_class()<CR>", "Test Class" },
-    u = { "<Cmd>JdtUpdateConfig<CR>", "Update Config" },
+    T = { "<Cmd>JavaTestRunCurrentClass<CR>", "Test Class" },
+    t = { "<Cmd>JavaTestRunCurrentMethod<CR>", "Test Method" },
+    v = { "<Cmd>JavaTestViewLastReport<CR>", "Test Results" },
+    r = { "<Cmd>JavaRunnerRunMain<CR>", "Run Main" },
+    p = { "<Cmd>JavaProfile<CR>", "Profile" },
     m = { "<Cmd>TermExec cmd='mvn clean install'<CR>", "Maven Clean Install" },
   },
 

@@ -5,7 +5,7 @@ end
 
 local lspconfig = require("lspconfig")
 
-local servers = { "lemminx", "groovyls", "yamlls", "bashls", "tsserver", "tflint", "ltex", "pylsp" }
+local servers = { "lemminx", "groovyls", "yamlls", "bashls", "tsserver", "tflint", "ltex", "pylsp", "jdtls"}
 
 lsp_installer.setup({
   })

@@ -6,8 +6,8 @@ null_ls.setup({
     null_ls.builtins.completion.spell,
     null_ls.builtins.formatting.prettier,
     null_ls.builtins.formatting.google_java_format,
-    null_ls.builtins.diagnostics.checkstyle.with({
-    extra_args = { "-c", "/google_checks.xml" }}),
+    -- null_ls.builtins.diagnostics.checkstyle.with({
+    -- extra_args = { "-c", "/google_checks.xml" }}),
     null_ls.builtins.code_actions.refactoring,
     null_ls.builtins.code_actions.gitsigns
   },

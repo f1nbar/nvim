@@ -69,9 +69,8 @@ require("lazy").setup ({
    "mfussenegger/nvim-dap",
    "rcarriga/nvim-dap-ui",
    "nvim-neotest/nvim-nio", -- async dep
-   -- "ravenxrz/DAPInstall.nvim",
   -- Java
-   "mfussenegger/nvim-jdtls",
+    'nvim-java/nvim-java',
     {
         'stevearc/overseer.nvim',
         opts = {},
