@@ -103,6 +103,10 @@ M.on_attach = function(client, bufnr)
     require "finbar.lsp.settings.yamlls"
   end
 
+  if client.name == "jdtls" then
+    require "finbar.lsp.settings.jdtls"
+  end
+
   -- if client.name == "tflint" then
   --   require'lspconfig'.tflint.setup{}
   -- end
