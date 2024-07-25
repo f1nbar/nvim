@@ -63,7 +63,11 @@ require("lazy").setup({
 	"windwp/nvim-autopairs", -- Autopairs, integrates with both cmp and treesitter
 	"nvimtools/none-ls.nvim",
 	"RRethy/vim-illuminate",
-	"ThePrimeagen/harpoon",
+    {
+        "ThePrimeagen/harpoon",
+        branch = "harpoon2",
+        dependencies = { "nvim-lua/plenary.nvim" }
+    },
 	-- which-key
 	"folke/which-key.nvim",
 	-- DAP for debugging
