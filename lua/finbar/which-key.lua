@@ -79,15 +79,16 @@ local opts = {
 }
 
 local mappings = {
-  ["/"] = { "<cmd>lua require(\"Comment.api\").toggle_current_linewise()<CR>", "Comment" },
+  ["/"] = { "<cmd>lua require(\"Comment.api\").toggle_current_linewise()<CR>", "Comment" }, 
   ["b"] = {
     "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
     "Buffers",
   },
-  ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
+  --[[ ["e"] = { "<cmd>Oil --float <cr>", "Explorer" }, ]]
+  ["e"] = { "<cmd>Neotree toggle<CR>", "Explorer" },
   ["w"] = { "<cmd>w!<CR>", "Save" },
   ["q"] = { "<cmd>q!<CR>", "Quit" },
-  ["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
+  ["c"] = { "<cmd>bdelete!<CR>", "Close Buffer" },
   ["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
   ["f"] = {
     "<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<cr>",
@@ -96,7 +97,6 @@ local mappings = {
 
   ["F"] = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
   ["P"] = { "<cmd>Telescope projects<cr>", "Projects" },
-  ["r"] = { "<cmd>SnipRun<cr>", "Run" },
 
   g = {
     name = "Git",
@@ -114,12 +114,22 @@ local mappings = {
     },
     o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
     b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
+    B = { "<cmd>lua require 'gitsigns'.blame()<cr>", "Git blame" },
     c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
     d = {
-      "<cmd>Gitsigns diffthis HEAD<cr>",
+      "<cmd>DiffviewOpen<cr>",
       "Diff",
     },
   },
+
+ C = {
+        name = "Copilot",
+        c = { "<cmd>CopilotChatToggle<cr>", "Chat" },
+        o = { "<cmd>CopilotChatOptimize<cr>", "Optimize" },
+        f = { "<cmd>CopilotChatFix<cr>", "Fix" },
+        e = { "<cmd>CopilotChatExplain<cr>", "Explain" },
+        d = { "<cmd>CopilotChatDocs<cr>", "Docs" },
+    },
 
   d = {
     name = "Harpoon",
@@ -139,16 +149,18 @@ local mappings = {
     i = { "<cmd>lua require 'dap'.step_into()<cr>", "Step Into" },
     o = { "<cmd>lua require 'dap'.step_over()<cr>", "Step Over" },
     t = { "<cmd>lua require 'dap'.step_out()<cr>", "Step Out" },
+    d = { "<cmd>lua require 'dap'.run_java_test_method()<cr>", "Test Test" },
+    r = { "<cmd>lua require 'dap'.repl.open()<cr>", "REPL" },
   },
 
-  L = {
+  j = {
     name = "Java",
-    o = { "<Cmd>lua require'jdtls'.organize_imports()<CR>", "Organize Imports" },
-    v = { "<Cmd>lua require('jdtls').extract_variable()<CR>", "Extract Variable" },
-    c = { "<Cmd>lua require('jdtls').extract_constant()<CR>", "Extract Constant" },
-    t = { "<Cmd>lua require'jdtls'.test_nearest_method()<CR>", "Test Method" },
-    T = { "<Cmd>lua require'jdtls'.test_class()<CR>", "Test Class" },
-    u = { "<Cmd>JdtUpdateConfig<CR>", "Update Config" },
+    T = { "<Cmd>JavaTestRunCurrentClass<CR>", "Test Class" },
+    t = { "<Cmd>JavaTestRunCurrentMethod<CR>", "Test Method" },
+    v = { "<Cmd>JavaTestViewLastReport<CR>", "Test Results" },
+    r = { "<Cmd>JavaRunnerRunMain<CR>", "Run Main" },
+    p = { "<Cmd>JavaProfile<CR>", "Profile" },
+    m = { "<Cmd>TermExec cmd='mvn clean install'<CR>", "Maven Clean Install" },
   },
 
   l = {
@@ -207,7 +219,16 @@ local vopts = {
   nowait = true, -- use `nowait` when creating keymaps
 }
 local vmappings = {
-  ["/"] = { "<ESC><CMD>lua require(\"Comment.api\").toggle_linewise_op(vim.fn.visualmode())<CR>", "Comment" },
+    ["/"] = { "<ESC><CMD>lua require(\"Comment.api\").toggle_linewise_op(vim.fn.visualmode())<CR>", "Comment" },
+    C = {
+        name = "Copilot",
+        c = { "<cmd>CopilotChatToggle<cr>", "Chat" },
+        o = { "<cmd>CopilotChatOptimize<cr>", "Optimize" },
+        d = { "<cmd>CopilotChatDocs<cr>", "Docs" },
+        f = { "<cmd>CopilotChatFix<cr>", "Fix" },
+        e = { "<cmd>CopilotChatExplain<cr>", "Explain" },
+    },
+    f = { "<cmd>lua vim.lsp.buf.format()<cr>", "Format" },
 }
 
 which_key.setup(setup)

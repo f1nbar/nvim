@@ -26,7 +26,7 @@ local options = {
 	shiftwidth = 4, 				-- the number of spaces inserted for each indentation
 	tabstop = 4, 					-- insert 4 spaces for a tab, 8 is weird lol
 	cursorline = false, 				-- highlight the current line
-	numberwidth = 2, 				-- set number column width to 2 {default 4}
+	numberwidth = 1, 				-- set number column width to 2 {default 4}
 	signcolumn = "yes", 				-- always show the sign column
 	wrap = false,  					-- display lines as one long line
 	scrolloff = 8, 					-- centers cursor
@@ -34,6 +34,7 @@ local options = {
 }
 
 vim.cmd "cmap w!! w !sudo tee %" 		-- you can't stop me!!
+vim.cmd "command! BufOnly execute '%bdelete|edit#|bdelete#'" -- Delete all buffers but current
 
 for k, v in pairs(options) do
 	vim.opt[k] = v

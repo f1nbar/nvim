@@ -15,7 +15,7 @@ local check_backspace = function()
   return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
 end
 
---   פּ ﯟ   some other good icons
+--   פּ ﯟ   some other good icons
 local kind_icons = {
   Text = "",
   Method = "m",
@@ -42,8 +42,15 @@ local kind_icons = {
   Event = "",
   Operator = "",
   TypeParameter = "",
+  Copilot= "",
 }
 -- find more here: https://www.nerdfonts.com/cheat-sheet
+--
+local has_words_before = function()
+  if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then return false end
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  return col ~= 0 and vim.api.nvim_buf_get_text(0, line-1, 0, line-1, col, {})[1]:match("^%s*$") == nil
+end
 
 cmp.setup {
   snippet = {
@@ -122,9 +129,10 @@ cmp.setup {
           return true
         end
       end,
-      group_index = 2,
+      group_index = 1,
     },
     { name = "nvim_lua", group_index = 2 },
+    { name = "copilot", group_index = 2 },
     { name = "luasnip", group_index = 2 },
     {
       name = "buffer",
