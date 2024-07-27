@@ -27,7 +27,7 @@ require("lazy").setup({
 	"kyazdani42/nvim-web-devicons",
 	{ "nvim-neo-tree/neo-tree.nvim", dependencies = "MunifTanjim/nui.nvim" },
 	"nvim-lualine/lualine.nvim",
-    "kylechui/nvim-surround",
+	"kylechui/nvim-surround",
 	"goolord/alpha-nvim", --greeter
 	-- cmp plugins
 	"hrsh7th/nvim-cmp", -- The completion plugin
@@ -39,11 +39,14 @@ require("lazy").setup({
 	"hrsh7th/cmp-nvim-lua", -- completions for neovim lua API
 	{ "scalameta/nvim-metals", dependencies = "nvim-lua/plenary.nvim" }, -- Scala LSP
 	-- Snippets
-	{ "L3MON4D3/LuaSnip", dependencies = "rafamadriz/friendly-snippets" }, --snippet engine
+	{ "L3MON4D3/LuaSnip", lazy = true, dependencies = "rafamadriz/friendly-snippets" }, --snippet engine
 	-- LSP
-	"williamboman/mason.nvim", -- simple to use language server installer
-	"williamboman/mason-lspconfig.nvim",
-	"neovim/nvim-lspconfig", -- enable LSP
+	{
+		"williamboman/mason.nvim", -- simple to use language server installer
+		"williamboman/mason-lspconfig.nvim",
+		"neovim/nvim-lspconfig", -- enable LSP
+		lazy = true,
+	},
 	{ "ellisonleao/glow.nvim", config = true, cmd = "Glow" }, -- markdown preview
 	-- Telescope for finding files and live grep
 	"nvim-telescope/telescope.nvim",
@@ -63,11 +66,11 @@ require("lazy").setup({
 	"windwp/nvim-autopairs", -- Autopairs, integrates with both cmp and treesitter
 	"nvimtools/none-ls.nvim",
 	"RRethy/vim-illuminate",
-    {
-        "ThePrimeagen/harpoon",
-        branch = "harpoon2",
-        dependencies = { "nvim-lua/plenary.nvim" }
-    },
+	{
+		"ThePrimeagen/harpoon",
+		branch = "harpoon2",
+		dependencies = { "nvim-lua/plenary.nvim" },
+	},
 	-- which-key
 	"folke/which-key.nvim",
 	-- DAP for debugging
@@ -75,21 +78,22 @@ require("lazy").setup({
 	"rcarriga/nvim-dap-ui",
 	"nvim-neotest/nvim-nio", -- async dep
 	-- Java
-	"nvim-java/nvim-java",
 	{
-		"stevearc/overseer.nvim",
-		opts = {},
+		"nvim-java/nvim-java",
+		lazy = true,
 	},
-	"zbirenbaum/copilot.lua",
 	{
+		"zbirenbaum/copilot.lua",
 		"zbirenbaum/copilot-cmp",
 		config = function()
 			require("copilot_cmp").setup()
 		end,
+		lazy = true,
 	},
 	{
 		"CopilotC-Nvim/CopilotChat.nvim",
 		branch = "canary",
+		lazy = true,
 	},
 	-- { "mistricky/codesnap.nvim", build = "make" },
 	"alexghergh/nvim-tmux-navigation",
