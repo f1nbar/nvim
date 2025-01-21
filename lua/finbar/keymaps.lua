@@ -72,7 +72,6 @@ keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 
 keymap("n", "gl", "<cmd>lua vim.diagnostic.open_float()<cr>", opts)
 keymap("n", "gd", "<cmd>Telescope lsp_definitions<cr>", opts)
-keymap("n", "gd", "<cmd>Telescope lsp_declarations<cr>", opts)
 keymap("n", "gi", "<cmd>Telescope lsp_implementations<cr>", opts)
 keymap("n", "gr", "<cmd>Telescope lsp_references<cr>", opts)
 keymap("n", "<m-a>", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)

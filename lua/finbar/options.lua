@@ -39,5 +39,3 @@ vim.cmd "command! BufOnly execute '%bdelete|edit#|bdelete#'" -- Delete all buffe
 for k, v in pairs(options) do
 	vim.opt[k] = v
 end
-
-

@@ -87,6 +87,10 @@ M.on_attach = function(client, bufnr)
     require'lspconfig'.lemminx.setup{}
   end
 
+  if client.name == "groovyls" then
+    require "finbar.lsp.settings.groovyls"
+  end
+
   if client.name == "bashls" then
     require'lspconfig'.bashls.setup{}
   end

@@ -3,6 +3,8 @@ if not status_ok then
   return
 end
 
+local current_file_dir = vim.fn.expand('%:p:h')
+
 local setup = {
   plugins = {
     marks = true, -- shows a list of your marks on ' and `
@@ -160,7 +162,7 @@ local mappings = {
     v = { "<Cmd>JavaTestViewLastReport<CR>", "Test Results" },
     r = { "<Cmd>JavaRunnerRunMain<CR>", "Run Main" },
     p = { "<Cmd>JavaProfile<CR>", "Profile" },
-    m = { "<Cmd>TermExec cmd='mvn clean install'<CR>", "Maven Clean Install" },
+    m = { "<Cmd>let g:current_file_dir = expand('%:p:h') | execute 'TermExec dir=vertical cmd=''dir=$(find_up ' .. current_file_dir .. ' \"pom.xml\"); if [[ -n \"$dir\" ]]; then cd \"$dir\" && mvn -s /home/finbar/.m2/settings.xml clean install; else echo \"pom.xml not found\"; fi'''<CR>", "Maven Clean Install" },
   },
 
   l = {
@@ -206,6 +208,9 @@ local mappings = {
     C = { "<cmd>Telescope commands<cr>", "Commands" },
   },
   u = {
+      "<cmd>lua require('undotree').toggle()<cr>","Undo"
+  },
+  U = {
       "<cmd>Telescope undo<cr>","Undo"
   },
 }

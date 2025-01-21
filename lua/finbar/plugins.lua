@@ -27,8 +27,9 @@ require("lazy").setup({
 	"kyazdani42/nvim-web-devicons",
 	{ "nvim-neo-tree/neo-tree.nvim", dependencies = "MunifTanjim/nui.nvim" },
 	"nvim-lualine/lualine.nvim",
-    "kylechui/nvim-surround",
+	"kylechui/nvim-surround",
 	"goolord/alpha-nvim", --greeter
+	"jiaoshijie/undotree",
 	-- cmp plugins
 	"hrsh7th/nvim-cmp", -- The completion plugin
 	"hrsh7th/cmp-buffer", -- buffer completions
@@ -36,6 +37,7 @@ require("lazy").setup({
 	"hrsh7th/cmp-cmdline", -- cmdline completions
 	"saadparwaiz1/cmp_luasnip", -- snippet completions
 	"hrsh7th/cmp-nvim-lsp", -- lsp completions
+    "onsails/lspkind.nvim", -- lsp icons
 	"hrsh7th/cmp-nvim-lua", -- completions for neovim lua API
 	{ "scalameta/nvim-metals", dependencies = "nvim-lua/plenary.nvim" }, -- Scala LSP
 	-- Snippets
@@ -45,6 +47,7 @@ require("lazy").setup({
 	"williamboman/mason-lspconfig.nvim",
 	"neovim/nvim-lspconfig", -- enable LSP
 	{ "ellisonleao/glow.nvim", config = true, cmd = "Glow" }, -- markdown preview
+    "ibhagwan/fzf-lua",
 	-- Telescope for finding files and live grep
 	"nvim-telescope/telescope.nvim",
 	"debugloop/telescope-undo.nvim",
@@ -63,11 +66,7 @@ require("lazy").setup({
 	"windwp/nvim-autopairs", -- Autopairs, integrates with both cmp and treesitter
 	"nvimtools/none-ls.nvim",
 	"RRethy/vim-illuminate",
-    {
-        "ThePrimeagen/harpoon",
-        branch = "harpoon2",
-        dependencies = { "nvim-lua/plenary.nvim" }
-    },
+    "ThePrimeagen/harpoon",
 	-- which-key
 	"folke/which-key.nvim",
 	-- DAP for debugging
