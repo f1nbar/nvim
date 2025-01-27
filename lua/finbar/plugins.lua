@@ -74,7 +74,7 @@ require("lazy").setup({
 	"rcarriga/nvim-dap-ui",
 	"nvim-neotest/nvim-nio", -- async dep
 	-- Java
-	"nvim-java/nvim-java",
+	"mfussenegger/nvim-jdtls",
 	{
 		"stevearc/overseer.nvim",
 		opts = {},

@@ -1,4 +1,3 @@
--- Handling LSP for everything other than Java because it is a pain
 M = {}
 
 M.capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -107,9 +106,10 @@ M.on_attach = function(client, bufnr)
     require "finbar.lsp.settings.yamlls"
   end
 
-  if client.name == "jdtls" then
-    require "finbar.lsp.settings.jdtls"
-  end
+  -- if client.name == "jdtls" then
+  --   -- require'lspconfig'.jdtls.setup{}
+  --   require "finbar.lsp.settings.jdtls"
+  -- end
 
   -- if client.name == "tflint" then
   --   require'lspconfig'.tflint.setup{}

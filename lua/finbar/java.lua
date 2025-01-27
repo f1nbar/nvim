@@ -1,1 +1,1 @@
-require('java').setup()
+-- require('java').setup()
