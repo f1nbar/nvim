@@ -1,17 +1,5 @@
 return {
-  settings = {
-    java = {
-      configuration = {
-        runtimes = {
-          {
-            name = "JavaSE-17",
-            path = "/Library/Java/JavaVirtualMachines/zulu-17.jdk/",
-            default = true,
-          }
-        }
-      }
-    }
-  }
+    jdtls=noop
 }
 -- return {
 -- 	settings = {

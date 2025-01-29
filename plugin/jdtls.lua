@@ -3,11 +3,11 @@ local cache_vars = {}
 
 local root_files = {
     '.git',
-    'mvnw',
-    'gradlew',
-    'pom.xml',
-    'build.gradle',
-    'build.sbt'
+    -- 'mvnw',
+    -- 'gradlew',
+    -- 'pom.xml',
+    -- 'build.gradle',
+    -- 'build.sbt'
 }
 
 local features = {
@@ -85,13 +85,17 @@ local function get_jdtls_paths()
         -- Note: the field `name` must be a valid `ExecutionEnvironment`,
         -- you can find the list here:
         -- https://github.com/eclipse/eclipse.jdt.ls/wiki/Running-the-JAVA-LS-server-from-the-command-line#initialize-request
-        --
+
         {
             name = 'JavaSE-17',
-            path = vim.fn.expand('/Library/Java/JavaVirtualMachines/zulu-17.jdk/'),
+            path = '/Library/Java/JavaVirtualMachines/openjdk-17.jdk/Contents/Home/'
+        },
+        {
+            name = 'JavaSE-11',
+            path = '/Library/Java/JavaVirtualMachines/openjdk-11.jdk/Contents/Home/'
         },
 
-    }
+   }
 
     cache_vars.paths = path
 
@@ -133,14 +137,14 @@ local function jdtls_on_attach(client, bufnr)
     -- The following mappings are based on the suggested usage of nvim-jdtls
     -- https://github.com/mfussenegger/nvim-jdtls#usage
 
-    local opts = { buffer = bufnr }
-    vim.keymap.set('n', '<A-o>', "<cmd>lua require('jdtls').organize_imports()<cr>", opts)
-    vim.keymap.set('n', 'crv', "<cmd>lua require('jdtls').extract_variable()<cr>", opts)
-    vim.keymap.set('x', 'crv', "<esc><cmd>lua require('jdtls').extract_variable(true)<cr>", opts)
-    vim.keymap.set('n', 'crc', "<cmd>lua require('jdtls').extract_constant()<cr>", opts)
-    vim.keymap.set('x', 'crc', "<esc><cmd>lua require('jdtls').extract_constant(true)<cr>", opts)
-    vim.keymap.set('x', 'crm', "<esc><Cmd>lua require('jdtls').extract_method(true)<cr>", opts)
-    vim.keymap.set('n', '<leader>pjp', "<cmd>lua require('jdtls').javap()<cr>", opts)
+    -- local opts = { buffer = bufnr }
+    -- vim.keymap.set('n', '<A-o>', "<cmd>lua require('jdtls').organize_imports()<cr>", opts)
+    -- vim.keymap.set('n', 'crv', "<cmd>lua require('jdtls').extract_variable()<cr>", opts)
+    -- vim.keymap.set('x', 'crv', "<esc><cmd>lua require('jdtls').extract_variable(true)<cr>", opts)
+    -- vim.keymap.set('n', 'crc', "<cmd>lua require('jdtls').extract_constant()<cr>", opts)
+    -- vim.keymap.set('x', 'crc', "<esc><cmd>lua require('jdtls').extract_constant(true)<cr>", opts)
+    -- vim.keymap.set('x', 'crm', "<esc><Cmd>lua require('jdtls').extract_method(true)<cr>", opts)
+    -- vim.keymap.set('n', '<leader>pjp', "<cmd>lua require('jdtls').javap()<cr>", opts)
 end
 
 local function jdtls_setup(event)
@@ -165,8 +169,7 @@ local function jdtls_setup(event)
     -- The command that starts the language server
     -- See: https://github.com/eclipse/eclipse.jdt.ls#running-from-the-command-line
     local cmd = {
-        'java',
-
+        '/Library/Java/JavaVirtualMachines/openjdk-21.jdk/Contents/Home/bin/java',
         '-Declipse.application=org.eclipse.jdt.ls.core.id1',
         '-Dosgi.bundles.defaultStartLevel=4',
         '-Declipse.product=org.eclipse.jdt.ls.core.product',
