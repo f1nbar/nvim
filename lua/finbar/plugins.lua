@@ -117,4 +117,5 @@ require("lazy").setup({
             "theHamsta/nvim-dap-virtual-text", -- recommended
         },
     },
+    "neanias/everforest-nvim",
 })

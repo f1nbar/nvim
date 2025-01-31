@@ -157,8 +157,8 @@ local mappings = {
 
   j = {
     name = "Java",
-    T = { "<Cmd>JavaTestRunCurrentClass<CR>", "Test Class" },
-    t = { "<Cmd>JavaTestRunCurrentMethod<CR>", "Test Method" },
+    T = { "<Cmd>lua require('jdtls').test_class()<CR>", "Test Class" },
+    t = { "<Cmd>lua require('jdtls').test_nearest_method()<CR>", "Test Method" },
     v = { "<Cmd>JavaTestViewLastReport<CR>", "Test Results" },
     r = { "<Cmd>JavaRunnerRunMain<CR>", "Run Main" },
     p = { "<Cmd>JavaProfile<CR>", "Profile" },

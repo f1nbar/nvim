@@ -1,4 +1,4 @@
-local colorscheme = "catppuccin"
+local colorscheme = "everforest"
 
 vim.g.catppuccin_flavour = "mocha"
 
