@@ -70,7 +70,12 @@ require("lazy").setup({
 	-- which-key
 	"folke/which-key.nvim",
 	-- DAP for debugging
-	"mfussenegger/nvim-dap",
+	{
+		"mfussenegger/nvim-dap",
+		dependencies = {
+			{ "igorlfs/nvim-dap-view", opts = {} },
+		},
+	},
 	"rcarriga/nvim-dap-ui",
 	"nvim-neotest/nvim-nio", -- async dep
 	-- Java
@@ -113,9 +118,9 @@ require("lazy").setup({
         dependencies = {
             "mfussenegger/nvim-jdtls",
             "mfussenegger/nvim-dap", -- for the debugger
-            "rcarriga/nvim-dap-ui", -- recommended
             "theHamsta/nvim-dap-virtual-text", -- recommended
         },
     },
     "neanias/everforest-nvim",
+    "ibhagwan/fzf-lua",
 })

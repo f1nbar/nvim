@@ -87,13 +87,13 @@ local function get_jdtls_paths()
         -- https://github.com/eclipse/eclipse.jdt.ls/wiki/Running-the-JAVA-LS-server-from-the-command-line#initialize-request
 
         {
-            name = 'JavaSE-17',
-            path = '/Library/Java/JavaVirtualMachines/openjdk-17.jdk/Contents/Home/'
-        },
-        {
             name = 'JavaSE-11',
-            path = '/Library/Java/JavaVirtualMachines/openjdk-11.jdk/Contents/Home/'
+            path = '/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home/'
         },
+        -- {
+        --     name = 'JavaSE-17',
+        --     path = '/Library/Java/JavaVirtualMachines/openjdk-17.jdk/Contents/Home/'
+        -- },
 
    }
 
@@ -120,8 +120,6 @@ local function enable_debugger(bufnr)
     require('jdtls.dap').setup_dap_main_class_configs()
 
     local opts = { buffer = bufnr }
-    vim.keymap.set('n', '<leader>df', "<cmd>lua require('jdtls').test_class()<cr>", opts)
-    vim.keymap.set('n', '<leader>dn', "<cmd>lua require('jdtls').test_nearest_method()<cr>", opts)
 end
 
 local function jdtls_on_attach(client, bufnr)
@@ -169,7 +167,7 @@ local function jdtls_setup(event)
     -- The command that starts the language server
     -- See: https://github.com/eclipse/eclipse.jdt.ls#running-from-the-command-line
     local cmd = {
-        '/Library/Java/JavaVirtualMachines/openjdk-21.jdk/Contents/Home/bin/java',
+        '/Library/Java/JavaVirtualMachines/zulu-21.jdk/Contents/Home/bin/java',
         '-Declipse.application=org.eclipse.jdt.ls.core.id1',
         '-Dosgi.bundles.defaultStartLevel=4',
         '-Declipse.product=org.eclipse.jdt.ls.core.product',

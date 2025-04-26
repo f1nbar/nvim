@@ -80,6 +80,11 @@ local opts = {
   nowait = true, -- use `nowait` when creating keymaps
 }
 
+function varfloat()
+    local widgets = require("dap.ui.widgets")
+    widgets.centered_float(widgets.scopes, { border = "rounded" })
+end
+
 local mappings = {
   ["/"] = { "<cmd>lua require(\"Comment.api\").toggle_current_linewise()<CR>", "Comment" }, 
   ["b"] = {
@@ -145,14 +150,14 @@ local mappings = {
 
   D = {
     name = "DAP",
-    u = { "<cmd>lua require 'dapui'.toggle()<cr>", "DAPUI" },
+    u = { "<cmd>lua require 'dap-view'.toggle()<cr>", "Dap View" },
+    v = {"<cmd>lua varfloat()<cr>", "View Variables"},
     b = { "<cmd>lua require 'dap'.toggle_breakpoint()<cr>", "Toggle Breakpoint" },
     c = { "<cmd>lua require 'dap'.continue()<cr>", "Continue" },
     i = { "<cmd>lua require 'dap'.step_into()<cr>", "Step Into" },
     o = { "<cmd>lua require 'dap'.step_over()<cr>", "Step Over" },
     t = { "<cmd>lua require 'dap'.step_out()<cr>", "Step Out" },
     d = { "<cmd>lua require 'dap'.run_java_test_method()<cr>", "Test Test" },
-    r = { "<cmd>lua require 'dap'.repl.open()<cr>", "REPL" },
   },
 
   j = {
