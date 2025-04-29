@@ -75,5 +75,3 @@ keymap("n", "gd", "<cmd>Telescope lsp_definitions<cr>", opts)
 keymap("n", "gi", "<cmd>Telescope lsp_implementations<cr>", opts)
 keymap("n", "gr", "<cmd>Telescope lsp_references<cr>", opts)
 keymap("n", "<m-a>", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
-
-keymap("n", "<leader>d;", "<cmd>lua require 'harpoon.ui'.nav_file(4)<cr>", opts)

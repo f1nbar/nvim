@@ -145,7 +145,7 @@ local mappings = {
     j = { "<cmd>lua require 'harpoon.ui'.nav_file(1)<cr>", "File 1" },
     k = { "<cmd>lua require 'harpoon.ui'.nav_file(2)<cr>", "File 2" },
     l = { "<cmd>lua require 'harpoon.ui'.nav_file(3)<cr>", "File 3" },
-    -- TODO fix me as I don't work, add to normal keymaps[[ ; = { "<cmd>lua require 'harpoon.ui'.nav_file(4)<cr>", "File 4" }, ]] 
+    [";"] = { "<cmd>lua require 'harpoon.ui'.nav_file(4)<cr>", "File 4" }, 
   },
 
   D = {
@@ -164,9 +164,9 @@ local mappings = {
     name = "Java",
     T = { "<Cmd>lua require('jdtls').test_class()<CR>", "Test Class" },
     t = { "<Cmd>lua require('jdtls').test_nearest_method()<CR>", "Test Method" },
-    v = { "<Cmd>JavaTestViewLastReport<CR>", "Test Results" },
-    r = { "<Cmd>JavaRunnerRunMain<CR>", "Run Main" },
-    p = { "<Cmd>JavaProfile<CR>", "Profile" },
+    -- v = { "<Cmd>JavaTestViewLastReport<CR>", "Test Results" },
+    -- r = { "<Cmd>JavaRunnerRunMain<CR>", "Run Main" },
+    -- p = { "<Cmd>JavaProfile<CR>", "Profile" },
     m = { "<Cmd>let g:current_file_dir = expand('%:p:h') | execute 'TermExec dir=vertical cmd=''dir=$(find_up ' .. current_file_dir .. ' \"pom.xml\"); if [[ -n \"$dir\" ]]; then cd \"$dir\" && mvn -s /home/finbar/.m2/settings.xml clean install; else echo \"pom.xml not found\"; fi'''<CR>", "Maven Clean Install" },
   },
 
