@@ -91,10 +91,7 @@ require("lazy").setup({
 			require("copilot_cmp").setup()
 		end,
 	},
-	{
-		"CopilotC-Nvim/CopilotChat.nvim",
-		branch = "canary",
-	},
+	"CopilotC-Nvim/CopilotChat.nvim",
 	-- { "mistricky/codesnap.nvim", build = "make" },
 	"alexghergh/nvim-tmux-navigation",
     {
