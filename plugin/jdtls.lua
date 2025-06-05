@@ -163,7 +163,7 @@ local function jdtls_setup(event)
     -- The command that starts the language server
     -- See: https://github.com/eclipse/eclipse.jdt.ls#running-from-the-command-line
     local cmd = {
-        '/Library/Java/JavaVirtualMachines/zulu-21.jdk/Contents/Home/bin/java',
+        '/Library/Java/JavaVirtualMachines/openjdk.jdk/Contents/Home/bin/java',
         '-Declipse.application=org.eclipse.jdt.ls.core.id1',
         '-Dosgi.bundles.defaultStartLevel=4',
         '-Declipse.product=org.eclipse.jdt.ls.core.product',
@@ -208,6 +208,9 @@ local function jdtls_setup(event)
             configuration = {
                 updateBuildConfiguration = 'interactive',
                 runtimes = path.runtimes,
+                maven = {
+                    userSettings =  '/Users/odeaghf/.m2/settings.xml'
+                }
             },
             maven = {
                 downloadSources = true,
@@ -229,9 +232,9 @@ local function jdtls_setup(event)
             },
             format = {
                 enabled = true,
-                -- settings = {
-                --   profile = 'asdf'
-                -- },
+                settings = {
+                  url = 'https://google.github.io/styleguide/intellij-java-google-style.xml',
+                },
             }
         },
         signatureHelp = {
