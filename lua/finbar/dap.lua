@@ -14,7 +14,7 @@ config = function()
             -- -- If using multi-module projects, remove otherwise.
             -- projectName = "yourProjectName",
             --
-            javaExec = "/Library/Java/JavaVirtualMachines/openjdk-11.jdk/Contents/Home/bin/java",
+            -- javaExec = "/Library/Java/JavaVirtualMachines/openjdk-11.jdk/Contents/Home/bin/java",
             -- mainClass = "your.package.name.MainClassName",
             --
             -- -- If using the JDK9+ module system, this needs to be extended
@@ -35,24 +35,5 @@ config = function()
   dap.listeners.before.event_exited["dapui_config"] = function()
     dapui.close()
   end
-
-    function get_test_runner(test_name, debug)
-        if debug then
-            return 'mvn test -Dmaven.surefire.debug -Dtest="' .. test_name .. '"' 
-        end
-        return 'mvn test -Dtest="' .. test_name .. '"' 
-    end
-
-    function run_java_test_method(debug)
-        local utils = require'utils'
-        local method_name = utils.get_current_full_method_name("\\#")
-        vim.cmd('term ' .. get_test_runner(method_name, debug))
-    end
-
-    function run_java_test_class(debug)
-        local utils = require'utils'
-        local class_name = utils.get_current_full_class_name()
-        vim.cmd('term ' .. get_test_runner(class_name, debug))
-    end
 end
 

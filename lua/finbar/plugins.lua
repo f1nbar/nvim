@@ -31,7 +31,7 @@ require("lazy").setup({
 	"goolord/alpha-nvim", --greeter
 	"jiaoshijie/undotree",
 	-- cmp plugins
-	"hrsh7th/nvim-cmp", -- The completion plugin
+    "hrsh7th/nvim-cmp", -- The completion plugin
 	"hrsh7th/cmp-buffer", -- buffer completions
 	"hrsh7th/cmp-path", -- path completions
 	"hrsh7th/cmp-cmdline", -- cmdline completions
@@ -69,6 +69,7 @@ require("lazy").setup({
     "ThePrimeagen/harpoon",
 	-- which-key
 	"folke/which-key.nvim",
+    "folke/zen-mode.nvim",
 	-- DAP for debugging
 	{
 		"mfussenegger/nvim-dap",
@@ -77,28 +78,34 @@ require("lazy").setup({
 		},
 	},
 	"rcarriga/nvim-dap-ui",
-	"nvim-neotest/nvim-nio", -- async dep
 	-- Java
 	"mfussenegger/nvim-jdtls",
 	{
 		"stevearc/overseer.nvim",
 		opts = {},
 	},
-	"zbirenbaum/copilot.lua",
+	-- "zbirenbaum/copilot.lua",
 	{
-		"zbirenbaum/copilot-cmp",
-		config = function()
-			require("copilot_cmp").setup()
-		end,
+		"Exafunction/windsurf.nvim",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"hrsh7th/nvim-cmp",
+		},
 	},
-	"CopilotC-Nvim/CopilotChat.nvim",
-	-- { "mistricky/codesnap.nvim", build = "make" },
-	"alexghergh/nvim-tmux-navigation",
+	-- {
+	-- 	"zbirenbaum/copilot-cmp",
+	-- 	config = function()
+	-- 		require("copilot_cmp").setup()
+	-- 	end,
+	-- },
+	-- "CopilotC-Nvim/CopilotChat.nvim",
+	{ "mistricky/codesnap.nvim", build = "make" },
     {
         "nvim-neotest/neotest",
         dependencies = {
             "nvim-neotest/nvim-nio",
             "nvim-lua/plenary.nvim",
+            "rcasia/neotest-java",
             "antoinemadec/FixCursorHold.nvim",
             "nvim-treesitter/nvim-treesitter"
         },
@@ -109,15 +116,7 @@ require("lazy").setup({
             },
         },
     },
-    {
-        "rcasia/neotest-java",
-        ft = "java",
-        dependencies = {
-            "mfussenegger/nvim-jdtls",
-            "mfussenegger/nvim-dap", -- for the debugger
-            "theHamsta/nvim-dap-virtual-text", -- recommended
-        },
-    },
     "neanias/everforest-nvim",
     "ibhagwan/fzf-lua",
+    -- "https://github.com/fresh2dev/zellij.vim",
 })

@@ -86,7 +86,6 @@ function varfloat()
 end
 
 local mappings = {
-  ["/"] = { "<cmd>lua require(\"Comment.api\").toggle_current_linewise()<CR>", "Comment" }, 
   ["b"] = {
     "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
     "Buffers",
@@ -129,13 +128,21 @@ local mappings = {
     },
   },
 
+ -- C = {
+ --        name = "Copilot",
+ --        c = { "<cmd>CopilotChatToggle<cr>", "Chat" },
+ --        o = { "<cmd>CopilotChatOptimize<cr>", "Optimize" },
+ --        f = { "<cmd>CopilotChatFix<cr>", "Fix" },
+ --        e = { "<cmd>CopilotChatExplain<cr>", "Explain" },
+ --        d = { "<cmd>CopilotChatDocs<cr>", "Docs" },
+ --    },
  C = {
-        name = "Copilot",
-        c = { "<cmd>CopilotChatToggle<cr>", "Chat" },
-        o = { "<cmd>CopilotChatOptimize<cr>", "Optimize" },
-        f = { "<cmd>CopilotChatFix<cr>", "Fix" },
-        e = { "<cmd>CopilotChatExplain<cr>", "Explain" },
-        d = { "<cmd>CopilotChatDocs<cr>", "Docs" },
+        name = "Windsurf",
+        c = { "<cmd>Codeium Chat<cr>", "Chat" },
+        -- o = { "<cmd><cr>", "Optimize" },
+        -- f = { "<cmd><cr>", "Fix" },
+        -- e = { "<cmd><cr>", "Explain" },
+        -- d = { "<cmd><cr>", "Docs" },
     },
 
   d = {
@@ -167,7 +174,7 @@ local mappings = {
     -- v = { "<Cmd>JavaTestViewLastReport<CR>", "Test Results" },
     -- r = { "<Cmd>JavaRunnerRunMain<CR>", "Run Main" },
     -- p = { "<Cmd>JavaProfile<CR>", "Profile" },
-    m = { "<Cmd>let g:current_file_dir = expand('%:p:h') | execute 'TermExec dir=vertical cmd=''dir=$(find_up ' .. current_file_dir .. ' \"pom.xml\"); if [[ -n \"$dir\" ]]; then cd \"$dir\" && mvn -s /home/finbar/.m2/settings.xml clean install; else echo \"pom.xml not found\"; fi'''<CR>", "Maven Clean Install" },
+    -- m = { "<Cmd>let g:current_file_dir = expand('%:p:h') | execute 'TermExec dir=vertical cmd=''dir=$(find_up ' .. current_file_dir .. ' \"pom.xml\"); if [[ -n \"$dir\" ]]; then cd \"$dir\" && mvn -s /home/finbar/.m2/settings.xml clean install; else echo \"pom.xml not found\"; fi'''<CR>", "Maven Clean Install" },
   },
 
   l = {
@@ -193,7 +200,7 @@ local mappings = {
       "Prev Diagnostic",
     },
     l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
-    q = { "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>", "Quickfix" },
+    q = { "<cmd>Telescope quickfix<cr>", "Quickfix" },
     r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
     s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
     S = {
@@ -229,7 +236,6 @@ local vopts = {
   nowait = true, -- use `nowait` when creating keymaps
 }
 local vmappings = {
-    ["/"] = { "<ESC><CMD>lua require(\"Comment.api\").toggle_linewise_op(vim.fn.visualmode())<CR>", "Comment" },
     C = {
         name = "Copilot",
         c = { "<cmd>CopilotChatToggle<cr>", "Chat" },

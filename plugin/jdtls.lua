@@ -82,10 +82,10 @@ local function get_jdtls_paths()
         -- you can find the list here:
         -- https://github.com/eclipse/eclipse.jdt.ls/wiki/Running-the-JAVA-LS-server-from-the-command-line#initialize-request
 
-        {
-            name = 'JavaSE-11',
-            path = '/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home/'
-        },
+        -- {
+        --     name = 'JavaSE-11',
+        --     path = '/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home/'
+        -- },
         -- {
         --     name = 'JavaSE-17',
         --     path = '/Library/Java/JavaVirtualMachines/openjdk-17.jdk/Contents/Home/'
@@ -198,6 +198,7 @@ local function jdtls_setup(event)
             --   }
             -- },
             project = {
+                outputPath = "build/classes/java/main",
                 referencedLibraries = {
                     -- add any library jars here for the lsp to pick them up
                 },
@@ -231,7 +232,7 @@ local function jdtls_setup(event)
                 --}
             },
             format = {
-                enabled = true,
+                enabled = true, -- TODO, do we want this or null-ls
                 settings = {
                   url = 'https://google.github.io/styleguide/intellij-java-google-style.xml',
                 },
@@ -283,6 +284,22 @@ local function jdtls_setup(event)
         init_options = {
             bundles = path.bundles,
             extendedClientCapabilities = extendedClientCapabilities,
+            settings = {
+                java = {
+                    implementationsCodeLens = { enabled = true},
+                    imports = {
+                        gradle = {
+                            enabled = true,
+                            wrapper = {
+                                enabled = true,
+                            },
+                            annotationProcessing = {
+                                enabled = true,
+                            }
+                        },
+                    },
+                },
+            },
         },
     })
 end

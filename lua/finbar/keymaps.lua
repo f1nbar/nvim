@@ -25,12 +25,10 @@ keymap("n", "<C-u>", "<C-u>zz", opts)
 
 -- Normal --
 -- Better window navigation ctrl + hjkl
--- keymap("n", "<C-h>", nvim_tmux_nav.NvimTmuxNavigateLeft, opts)
--- keymap("n", "<C-j>", nvim_tmux_nav.NvimTmuxNavigateDown, opts)
--- keymap("n", "<C-k>", nvim_tmux_nav.NvimTmuxNavigateUp, opts)
--- keymap("n", "<C-l>", nvim_tmux_nav.NvimTmuxNavigateRight, opts)
--- keymap("n", "<C-//>", nvim_tmux_nav.NvimTmuxNavigateLastActive, opts)
--- keymap("n", "<C-Space>", nvim_tmux_nav.NvimTmuxNavigateNext, opts)
+keymap("n", "<C-h>", "<C-w>h", opts)
+keymap("n", "<C-j>", "<C-w>j", opts)
+keymap("n", "<C-k>", "<C-w>k", opts)
+keymap("n", "<C-l>", "<C-w>l", opts)
 
 -- Resize with arrows and control
 keymap("n", "<C-Up>", ":resize +2<CR>", opts)

@@ -30,7 +30,7 @@ local options = {
 	signcolumn = "yes", 				-- always show the sign column
 	wrap = false,  					-- display lines as one long line
 	scrolloff = 8, 					-- centers cursor
-	sidescrolloff = 8 				-- centers cursor
+	sidescrolloff = 8				-- centers cursor
 }
 
 vim.cmd "cmap w!! w !sudo tee %" 		-- you can't stop me!!

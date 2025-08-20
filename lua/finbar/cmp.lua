@@ -44,6 +44,7 @@ local kind_icons = {
   Operator = "",
   TypeParameter = "",
   Copilot= "",
+  Codeium= "",
 }
 -- find more here: https://www.nerdfonts.com/cheat-sheet
 --
@@ -70,38 +71,48 @@ cmp.setup {
       i = cmp.mapping.abort(),
       c = cmp.mapping.close(),
     },
-    -- Accept currently selected item. If none selected, `select` first item.
-    -- Set `select` to `false` to only confirm explicitly selected items.
-    -- supertab stuff from https://odysee.com/@chrisatmachine:f/neovim-completion-tutorial-100-lua:9
-    ["<CR>"] = cmp.mapping.confirm { select = true },
-    ["<Tab>"] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      elseif luasnip.expandable() then
-        luasnip.expand()
-      elseif luasnip.expand_or_jumpable() then
-        luasnip.expand_or_jump()
-      elseif check_backspace() then
-        fallback()
-      else
-        fallback()
-      end
-    end, {
-      "i",
-      "s",
-    }),
-    ["<S-Tab>"] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      elseif luasnip.jumpable(-1) then
-        luasnip.jump(-1)
-      else
-        fallback()
-      end
-    end, {
-      "i",
-      "s",
-    }),
+
+        ["<Enter>"] = function(fallback)
+            -- Don't block <CR> if signature help is active
+            -- https://github.com/hrsh7th/cmp-nvim-lsp-signature-help/issues/13
+            if not cmp.visible() or not cmp.get_selected_entry() or cmp.get_selected_entry().source.name == 'nvim_lsp_signature_help' then
+                fallback()
+            else
+                cmp.confirm({
+                    -- Replace word if completing in the middle of a word
+                    -- https://github.com/hrsh7th/nvim-cmp/issues/664
+                    behavior = cmp.ConfirmBehavior.Replace,
+                    -- Don't select first item on CR if nothing was selected
+                    select = false,
+                })
+            end
+        end,
+        ["<Tab>"] = cmp.mapping(function(fallback)
+            -- This little snippet will confirm with tab, and if no entry is selected, will confirm the first item
+            if cmp.visible() then
+                local entry = cmp.get_selected_entry()
+                if not entry then
+                    cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+                else
+                    cmp.confirm()
+                end
+            else
+                fallback()
+            end
+        end, { "i", "s", "c", }),
+
+  --   ["<Tab>"] = cmp.mapping(function(fallback)
+  --       -- This little snippet will confirm with tab, and if no entry is selected, will confirm the first item
+  --       if cmp.visible() then
+  --           local entry = cmp.get_selected_entry()
+  --           if not entry then
+  --               cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+  --           end
+  --           cmp.confirm()
+  --       else
+  --           fallback()
+  --       end
+  --   end, {"i","s","c",}),
   },
   formatting = {
     format = lspkind.cmp_format({
@@ -118,19 +129,7 @@ cmp.setup {
         return vim_item
       end
     })
-  },
-    -- fields = { "kind", "abbr", "menu" },
-    -- format = function(entry, vim_item)
-    --   -- Kind icons
-    --   vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
-    --   -- vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
-    --   vim_item.menu = ({
-    --     luasnip = "[Snippet]",
-    --     buffer = "[Buffer]",
-    --     path = "[Path]",
-    --   })[entry.source.name]
-    --   return vim_item
-    -- end,
+    },
   sources = {
     {
       name = "nvim_lsp",
@@ -146,8 +145,11 @@ cmp.setup {
       end,
       group_index = 1,
     },
+    { name = "codeium" },
+    { name = "cmdline" },
+    { name = "path"},
     { name = "nvim_lua", group_index = 2 },
-    { name = "copilot", group_index = 2 },
+    -- { name = "copilot", group_index = 2 },
     { name = "luasnip", group_index = 2 },
     {
       name = "buffer",
@@ -158,7 +160,6 @@ cmp.setup {
         end
       end,
     },
-    { name = "path", group_index = 2 },
   },
   confirm_opts = {
     behavior = cmp.ConfirmBehavior.Replace,
@@ -172,4 +173,16 @@ cmp.setup {
     native_menu = false,
   },
 }
-
+cmp.setup.cmdline(':', {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = cmp.config.sources({
+        { name = 'path' }
+    }, {
+        {
+            name = 'cmdline',
+            option = {
+                ignore_cmds = { 'Man', '!' }
+            }
+        }
+    })
+})
