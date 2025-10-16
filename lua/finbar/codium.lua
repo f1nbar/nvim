@@ -2,7 +2,7 @@ require("codeium").setup({
     -- Optionally disable cmp source if using virtual text only
     enable_cmp_source = true,
     virtual_text = {
-        enabled = true,
+        enabled =  false,
         -- These are the defaults
         -- Set to true if you never want completions to be shown automatically.
         manual = false,
@@ -24,11 +24,11 @@ require("codeium").setup({
         -- Key bindings for managing completions in virtual text mode.
         key_bindings = {
             -- Accept the current completion on ctrl + enter
-            accept = "<Tab>",
+            -- accept = "<Tab>",
             -- Accept the next word.
-            next = "<M-]>",
+            -- next = "<M-]>",
             -- Cycle to the previous completion.
-            prev = "<M-[>",
+            -- prev = "<M-[>",
         }
     }
 })

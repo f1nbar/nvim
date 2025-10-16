@@ -116,6 +116,7 @@ require("lazy").setup({
             },
         },
     },
+    "iamkarasik/sonarqube.nvim",
     "neanias/everforest-nvim",
     "ibhagwan/fzf-lua",
     -- "https://github.com/fresh2dev/zellij.vim",

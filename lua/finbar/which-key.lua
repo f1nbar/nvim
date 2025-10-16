@@ -122,10 +122,8 @@ local mappings = {
     b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
     B = { "<cmd>lua require 'gitsigns'.blame()<cr>", "Git blame" },
     c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
-    d = {
-      "<cmd>DiffviewOpen<cr>",
-      "Diff",
-    },
+    c = { "<cmd>Telescope git_bcommits<cr>", "View buffer commit history" },
+    d = { "<cmd>Gvdiffsplit<cr>", "View buffer diff" },
   },
 
  -- C = {
@@ -208,6 +206,15 @@ local mappings = {
       "Workspace Symbols",
     },
   },
+    n = {
+        name = "Neotest",
+        t = { "<cmd>lua require('neotest').run.run()<cr>", "Run nearest test" },
+        T = { "<cmd>lua require('neotest').run.run(vim.fn.expand('%'))<cr>", "Run file tests" },
+        d = { "<cmd>lua require('neotest').run.run({strategy = 'dap'})<cr>", "Debug nearest test" },
+        D = { "<cmd>lua require('neotest').run.run({strategy = 'dap', vim.fn.expand('%')})<cr>", "Debug file tests" },
+        o = { "<cmd>lua require('neotest').output.open()<cr>", "Open output" },
+        S = { "<cmd>lua require('neotest').summary.open({enter = true})<cr>", "Open summary and enter" },
+    },
   s = {
     name = "Search",
     b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },

@@ -146,7 +146,7 @@ cmp.setup {
       group_index = 1,
     },
     { name = "codeium" },
-    { name = "cmdline" },
+    -- { name = "cmdline" },
     { name = "path"},
     { name = "nvim_lua", group_index = 2 },
     -- { name = "copilot", group_index = 2 },
