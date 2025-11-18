@@ -70,6 +70,18 @@ require("lazy").setup({
 	-- which-key
 	"folke/which-key.nvim",
     "folke/zen-mode.nvim",
+    {
+        "folke/flash.nvim",
+        event = "VeryLazy",
+        -- TODO get keys out of here
+        keys = {
+            { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
+            { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
+            { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
+            { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+            { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
+        },
+    },
 	-- DAP for debugging
 	{
 		"mfussenegger/nvim-dap",
@@ -102,6 +114,7 @@ require("lazy").setup({
 	{ "mistricky/codesnap.nvim", build = "make" },
     {
         "nvim-neotest/neotest",
+        event = "VeryLazy",
         dependencies = {
             "nvim-neotest/nvim-nio",
             "nvim-lua/plenary.nvim",

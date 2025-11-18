@@ -1,3 +1,4 @@
+vim.g.codeium_disable_bindings = 1
 require("codeium").setup({
     -- Optionally disable cmp source if using virtual text only
     enable_cmp_source = true,
