@@ -119,5 +119,10 @@ require("lazy").setup({
     "iamkarasik/sonarqube.nvim",
     "neanias/everforest-nvim",
     "ibhagwan/fzf-lua",
+    {
+        "rachartier/tiny-inline-diagnostic.nvim",
+        event = "VeryLazy",
+        priority = 1000,
+    }
     -- "https://github.com/fresh2dev/zellij.vim",
 })
