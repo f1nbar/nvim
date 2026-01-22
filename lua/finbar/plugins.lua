@@ -31,21 +31,29 @@ require("lazy").setup({
 	"goolord/alpha-nvim", --greeter
 	"jiaoshijie/undotree",
 	-- cmp plugins
-    "hrsh7th/nvim-cmp", -- The completion plugin
-	"hrsh7th/cmp-buffer", -- buffer completions
-	"hrsh7th/cmp-path", -- path completions
-	"hrsh7th/cmp-cmdline", -- cmdline completions
-	"saadparwaiz1/cmp_luasnip", -- snippet completions
-	"hrsh7th/cmp-nvim-lsp", -- lsp completions
+	{
+		'saghen/blink.cmp',
+		dependencies = {
+			{
+				'Exafunction/windsurf.nvim',
+			},
+		},
+	},
+	--    "hrsh7th/nvim-cmp", -- The completion plugin
+	-- "hrsh7th/cmp-buffer", -- buffer completions
+	-- "hrsh7th/cmp-path", -- path completions
+	-- "hrsh7th/cmp-cmdline", -- cmdline completions
+	-- "saadparwaiz1/cmp_luasnip", -- snippet completions
+	-- "hrsh7th/cmp-nvim-lsp", -- lsp completions
+	-- "hrsh7th/cmp-nvim-lua", -- completions for neovim lua API
     "onsails/lspkind.nvim", -- lsp icons
-	"hrsh7th/cmp-nvim-lua", -- completions for neovim lua API
 	{ "scalameta/nvim-metals", dependencies = "nvim-lua/plenary.nvim" }, -- Scala LSP
 	-- Snippets
 	{ "L3MON4D3/LuaSnip", dependencies = "rafamadriz/friendly-snippets" }, --snippet engine
 	-- LSP
-	"williamboman/mason.nvim", -- simple to use language server installer
-	"williamboman/mason-lspconfig.nvim",
+	"mason-org/mason.nvim", -- simple to use language server installer
 	"neovim/nvim-lspconfig", -- enable LSP
+    "mason-org/mason-lspconfig.nvim",
 	{ "ellisonleao/glow.nvim", config = true, cmd = "Glow" }, -- markdown preview
     "ibhagwan/fzf-lua",
 	-- Telescope for finding files and live grep
@@ -63,7 +71,7 @@ require("lazy").setup({
 	"nvim-treesitter/nvim-treesitter-textobjects",
 	"nvim-treesitter/refactor",
 	"JoosepAlviste/nvim-ts-context-commentstring", -- Smarter comments with treesitter intergration
-	"windwp/nvim-autopairs", -- Autopairs, integrates with both cmp and treesitter
+	-- "windwp/nvim-autopairs", -- Autopairs, integrates with both cmp and treesitter
 	"nvimtools/none-ls.nvim",
 	"RRethy/vim-illuminate",
     "ThePrimeagen/harpoon",
@@ -97,13 +105,6 @@ require("lazy").setup({
 		opts = {},
 	},
 	-- "zbirenbaum/copilot.lua",
-	{
-		"Exafunction/windsurf.nvim",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"hrsh7th/nvim-cmp",
-		},
-	},
 	-- {
 	-- 	"zbirenbaum/copilot-cmp",
 	-- 	config = function()
@@ -111,7 +112,7 @@ require("lazy").setup({
 	-- 	end,
 	-- },
 	-- "CopilotC-Nvim/CopilotChat.nvim",
-	{ "mistricky/codesnap.nvim", build = "make" },
+	-- { "mistricky/codesnap.nvim", build = "make" },
     {
         "nvim-neotest/neotest",
         event = "VeryLazy",
