@@ -10,8 +10,6 @@ if not mason_lsp_status_ok then
   return
 end
 
-local cmp_status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-
 mason.setup()
 
 local servers = {
@@ -25,6 +23,8 @@ local servers = {
   "ltex",
   "pyright",
   "jsonls",
+  "yaml-language-server",
+  "helm-ls"
 }
 
 mason_lspconfig.setup({
@@ -54,9 +54,7 @@ end
 
 -- Capabilities for nvim-cmp integration
 M.capabilities = vim.lsp.protocol.make_client_capabilities()
-if cmp_status_ok then
-  M.capabilities = cmp_nvim_lsp.default_capabilities(M.capabilities)
-end
+M.capabilities = require('blink.cmp').get_lsp_capabilities(M.capabilities)
 
 -- Optional navic integration
 local function attach_navic(client, bufnr)
@@ -111,9 +109,10 @@ for _, server in ipairs(servers) do
   }
   local server_settings = load_server_settings(server)
 
-  opts = vim.tbl_deep_extend("force", opts, server_settings)
+  -- opts = vim.tbl_deep_extend("force", opts, server_settings)
 
-  vim.lsp.enable(server)
+  -- vim.lsp.enable(server)
+    
 end
 
 -- Format-on-save helper functions:

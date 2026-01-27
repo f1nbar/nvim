@@ -1,0 +1,86 @@
+local mason_status_ok, mason = pcall(require, "mason")
+if not mason_status_ok then
+    return
+end
+
+local mason_lsp_status_ok, mason_lspconfig = pcall(require, "mason-lspconfig")
+if not mason_lsp_status_ok then
+    return
+end
+
+mason.setup()
+
+local servers = {
+    "lemminx",
+    "groovyls",
+    "yamlls",
+    "lua_ls",
+    "bashls",
+    "ts_ls",
+    "tflint",
+    "ltex",
+    "pyright",
+    "jsonls",
+    "yaml-language-server",
+    "helm-ls"
+}
+
+mason_lspconfig.setup({
+    automatic_enable = false,
+    ensure_installed = servers,
+    automatic_installation = true,
+})
+
+local function load_server_settings(server_name)
+  local ok, settings = pcall(require, "finbar.lsp.settings." .. server_name)
+  if ok then
+    return settings
+  else
+    return {}
+  end
+end
+
+for _, server in ipairs(servers) do
+  local server_settings = load_server_settings(server)
+  vim.lsp.config(server, server_settings)
+  vim.lsp.enable(server)
+end
+
+-- Setup buffer keymaps for common LSP functions
+local opts = { noremap = true, silent = true }
+
+local keymap = vim.keymap.set
+keymap("n", "gd", vim.lsp.buf.definition, opts)
+keymap("n", "K", vim.lsp.buf.hover, opts)
+keymap("n", "gD", vim.lsp.buf.declaration, opts)
+keymap("n", "gi", vim.lsp.buf.implementation, opts)
+keymap("n", "gr", vim.lsp.buf.references, opts)
+keymap("n", "<leader>rn", vim.lsp.buf.rename, opts)
+keymap("n", "<leader>ca", vim.lsp.buf.code_action, opts)
+keymap("n", "[d", vim.diagnostic.goto_prev, opts)
+keymap("n", "]d", vim.diagnostic.goto_next, opts)
+keymap("n", "<leader>f", vim.lsp.buf.format, opts)
+
+vim.g.python3_host_prog = vim.fn.system('uv run which python'):gsub('\n', '')
+
+local function setup_diagnostics()
+  local signs = {
+    { name = "DiagnosticSignError", text = "" },
+    { name = "DiagnosticSignWarn",  text = "" },
+    { name = "DiagnosticSignHint",  text = "" },
+    { name = "DiagnosticSignInfo",  text = "" },
+  }
+
+  for _, sign in ipairs(signs) do
+    vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
+  end
+
+  vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+    border = "rounded",
+  })
+  vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+    border = "rounded",
+  })
+end
+
+setup_diagnostics()

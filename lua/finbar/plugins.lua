@@ -39,13 +39,6 @@ require("lazy").setup({
 			},
 		},
 	},
-	--    "hrsh7th/nvim-cmp", -- The completion plugin
-	-- "hrsh7th/cmp-buffer", -- buffer completions
-	-- "hrsh7th/cmp-path", -- path completions
-	-- "hrsh7th/cmp-cmdline", -- cmdline completions
-	-- "saadparwaiz1/cmp_luasnip", -- snippet completions
-	-- "hrsh7th/cmp-nvim-lsp", -- lsp completions
-	-- "hrsh7th/cmp-nvim-lua", -- completions for neovim lua API
     "onsails/lspkind.nvim", -- lsp icons
 	{ "scalameta/nvim-metals", dependencies = "nvim-lua/plenary.nvim" }, -- Scala LSP
 	-- Snippets
