@@ -125,22 +125,15 @@ local mappings = {
         d = { "<cmd>Gvdiffsplit<cr>", "View buffer diff" },
     },
 
-    -- C = {
-    --        name = "Copilot",
-    --        c = { "<cmd>CopilotChatToggle<cr>", "Chat" },
-    --        o = { "<cmd>CopilotChatOptimize<cr>", "Optimize" },
-    --        f = { "<cmd>CopilotChatFix<cr>", "Fix" },
-    --        e = { "<cmd>CopilotChatExplain<cr>", "Explain" },
-    --        d = { "<cmd>CopilotChatDocs<cr>", "Docs" },
-    --    },
     C = {
-        name = "Windsurf",
-        c = { "<cmd>Codeium Chat<cr>", "Chat" },
-        -- o = { "<cmd><cr>", "Optimize" },
-        -- f = { "<cmd><cr>", "Fix" },
-        -- e = { "<cmd><cr>", "Explain" },
-        -- d = { "<cmd><cr>", "Docs" },
-    },
+           name = "Sidekick",
+           c = { "<cmd>lua require('sidekick.cli').toggle({ name = 'claude', focus = true })<cr>", "Chat" },
+           -- o = { "<cmd>CopilotChatOptimize<cr>", "Optimize" },
+           -- f = { "<cmd>CopilotChatFix<cr>", "Fix" },
+           -- e = { "<cmd>CopilotChatExplain<cr>", "Explain" },
+           -- d = { "<cmd>CopilotChatDocs<cr>", "Docs" },
+           -- t = { "<cmd>lua _copilot_toggle()<cr>", "Copilot CLI" },
+       },
 
     d = {
         name = "Harpoon",
@@ -254,6 +247,7 @@ local vmappings = {
         d = { "<cmd>CopilotChatDocs<cr>", "Docs" },
         f = { "<cmd>CopilotChatFix<cr>", "Fix" },
         e = { "<cmd>CopilotChatExplain<cr>", "Explain" },
+        t = { "<cmd>ToggleTerm direction=float cmd='copilot'<cr>", "Copilot CLI" },
     },
     f = { "<cmd>lua vim.lsp.buf.format()<cr>", "Format" },
 }

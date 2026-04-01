@@ -42,7 +42,7 @@ keymap("n", "<S-h>", ":bprevious<CR>", opts)
 
 -- Insert --
 -- jk to escape insert mode
-keymap("i", "jk", "<ESC>", opts)
+-- keymap("i", "jk", "<ESC>", opts)
 
 -- Visual --
 -- Stay in indent mode when indenting

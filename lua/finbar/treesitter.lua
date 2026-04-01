@@ -2,7 +2,7 @@ local status_ok, configs = pcall(require, "nvim-treesitter.configs")
 if not status_ok then
     return
 end
-require('ts_context_commentstring').setup()
+-- require('ts_context_commentstring').setup()
 
 configs.setup {
     ensure_installed = {"java", "scala", "lua", "python", "rust", "go", "c", "markdown", "dockerfile", ""}, -- one of "all", "maintained" (parsers with maintainers), or a list of languages

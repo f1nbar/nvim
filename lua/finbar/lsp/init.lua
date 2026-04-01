@@ -126,6 +126,15 @@ function M.enable_format_on_save()
   vim.notify("Enabled format on save")
 end
 
+vim.api.nvim_create_autocmd("BufWritePost", {
+  pattern = "*.java",
+  callback = function()
+    vim.fn.jobstart("cd " .. vim.fn.getcwd() .. " && ./gradlew spotlessApply", {
+      detach = true
+    })
+  end,
+})
+
 function M.disable_format_on_save()
   if vim.fn.exists("#format_on_save#BufWritePre") == 1 then
     vim.cmd("au! format_on_save")

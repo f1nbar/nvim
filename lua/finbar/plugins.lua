@@ -1,111 +1,118 @@
 -- Automatically install lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-	vim.fn.system({
-		"git",
-		"clone",
-		"--filter=blob:none",
-		"https://github.com/folke/lazy.nvim.git",
-		"--branch=stable", -- latest stable release
-		lazypath,
-	})
+    vim.fn.system({
+        "git",
+        "clone",
+        "--filter=blob:none",
+        "https://github.com/folke/lazy.nvim.git",
+        "--branch=stable", -- latest stable release
+        lazypath,
+    })
 end
 vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 require("lazy").setup({
-	"nvim-lua/popup.nvim", -- An implementation of the Popup API from vim in Neovim
-	"nvim-lua/plenary.nvim", -- useful lua functions used ny lots of plugins
-	-- Git
-	"lewis6991/gitsigns.nvim", -- git tools
-	{ "kdheepak/lazygit.nvim", dependencies = "nvim-lua/plenary.nvim" },
-	"tpope/vim-fugitive", -- Git commands
-	"akinsho/toggleterm.nvim", -- terminals everywhere
-	-- Theme
-	"catppuccin/nvim",
-	"kyazdani42/nvim-web-devicons",
-	{ "nvim-neo-tree/neo-tree.nvim", dependencies = "MunifTanjim/nui.nvim" },
-	"nvim-lualine/lualine.nvim",
-	"kylechui/nvim-surround",
-	"goolord/alpha-nvim", --greeter
-	"jiaoshijie/undotree",
-	-- cmp plugins
-	{
-		'saghen/blink.cmp',
-		dependencies = {
-			{
-				'Exafunction/windsurf.nvim',
-			},
-		},
-	},
-    "onsails/lspkind.nvim", -- lsp icons
-	{ "scalameta/nvim-metals", dependencies = "nvim-lua/plenary.nvim" }, -- Scala LSP
-	-- Snippets
-	{ "L3MON4D3/LuaSnip", dependencies = "rafamadriz/friendly-snippets" }, --snippet engine
-	-- LSP
-	"mason-org/mason.nvim", -- simple to use language server installer
-	"neovim/nvim-lspconfig", -- enable LSP
+    "nvim-lua/popup.nvim",  -- An implementation of the Popup API from vim in Neovim
+    "nvim-lua/plenary.nvim", -- useful lua functions used ny lots of plugins
+    -- Git
+    "lewis6991/gitsigns.nvim", -- git tools
+    { "kdheepak/lazygit.nvim",       dependencies = "nvim-lua/plenary.nvim" },
+    "tpope/vim-fugitive",   -- Git commands
+    "akinsho/toggleterm.nvim", -- terminals everywhere
+    -- Theme
+    "catppuccin/nvim",
+    "kyazdani42/nvim-web-devicons",
+    { "nvim-neo-tree/neo-tree.nvim", dependencies = "MunifTanjim/nui.nvim" },
+    "nvim-lualine/lualine.nvim",
+    "kylechui/nvim-surround",
+    "goolord/alpha-nvim", --greeter
+    "jiaoshijie/undotree",
+    -- cmp plugins
+    {
+        'saghen/blink.cmp',
+        tag = 'v1.8.0',
+        dependencies = {
+            {
+                "fang2hou/blink-copilot",
+            },
+        },
+    },
+    "onsails/lspkind.nvim",                                             -- lsp icons
+    { "scalameta/nvim-metals", dependencies = "nvim-lua/plenary.nvim" }, -- Scala LSP
+    -- Snippets
+    { "L3MON4D3/LuaSnip",      dependencies = "rafamadriz/friendly-snippets" }, --snippet engine
+    -- LSP
+    "mason-org/mason.nvim",                                             -- simple to use language server installer
+    "neovim/nvim-lspconfig",                                            -- enable LSP
     "mason-org/mason-lspconfig.nvim",
-	{ "ellisonleao/glow.nvim", config = true, cmd = "Glow" }, -- markdown preview
+    { "ellisonleao/glow.nvim",                    config = true, cmd = "Glow" }, -- markdown preview
     "ibhagwan/fzf-lua",
-	-- Telescope for finding files and live grep
-	"nvim-telescope/telescope.nvim",
-	"debugloop/telescope-undo.nvim",
-	"nvim-telescope/telescope-dap.nvim",
-	"nvim-telescope/telescope-media-files.nvim",
-	"nvim-telescope/telescope-ui-select.nvim",
-	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-	"ahmedkhalf/project.nvim", -- find recently opened projects
-	{
-		"nvim-treesitter/nvim-treesitter",
-		build = ":TSUpdate",
-	},
-	"nvim-treesitter/nvim-treesitter-textobjects",
-	"nvim-treesitter/refactor",
-	"JoosepAlviste/nvim-ts-context-commentstring", -- Smarter comments with treesitter intergration
-	-- "windwp/nvim-autopairs", -- Autopairs, integrates with both cmp and treesitter
-	"nvimtools/none-ls.nvim",
-	"RRethy/vim-illuminate",
+    -- Telescope for finding files and live grep
+    "nvim-telescope/telescope.nvim",
+    "debugloop/telescope-undo.nvim",
+    "nvim-telescope/telescope-dap.nvim",
+    "nvim-telescope/telescope-media-files.nvim",
+    "nvim-telescope/telescope-ui-select.nvim",
+    { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+    "ahmedkhalf/project.nvim", -- find recently opened projects
+    {
+        "nvim-treesitter/nvim-treesitter",
+        build = ":TSUpdate",
+    },
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    "nvim-treesitter/refactor",
+    -- "JoosepAlviste/nvim-ts-context-commentstring", -- Smarter comments with treesitter intergration
+    -- "windwp/nvim-autopairs", -- Autopairs, integrates with both cmp and treesitter
+    "nvimtools/none-ls.nvim",
+    "RRethy/vim-illuminate",
     "ThePrimeagen/harpoon",
-	-- which-key
-	"folke/which-key.nvim",
+    -- which-key
+    "folke/which-key.nvim",
     "folke/zen-mode.nvim",
     {
         "folke/flash.nvim",
         event = "VeryLazy",
         -- TODO get keys out of here
         keys = {
-            { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
-            { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
-            { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
-            { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
-            { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
+            { "s",     mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
+            { "S",     mode = { "n", "x", "o" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
+            { "r",     mode = "o",               function() require("flash").remote() end,            desc = "Remote Flash" },
+            { "R",     mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+            { "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
         },
     },
-	-- DAP for debugging
-	{
-		"mfussenegger/nvim-dap",
-		dependencies = {
-			{ "igorlfs/nvim-dap-view", opts = {} },
-		},
-	},
-	"rcarriga/nvim-dap-ui",
-	-- Java
-	"mfussenegger/nvim-jdtls",
-	{
-		"stevearc/overseer.nvim",
-		opts = {},
-	},
-	-- "zbirenbaum/copilot.lua",
-	-- {
-	-- 	"zbirenbaum/copilot-cmp",
-	-- 	config = function()
-	-- 		require("copilot_cmp").setup()
-	-- 	end,
-	-- },
-	-- "CopilotC-Nvim/CopilotChat.nvim",
-	-- { "mistricky/codesnap.nvim", build = "make" },
+    -- DAP for debugging
+    {
+        "mfussenegger/nvim-dap",
+        dependencies = {
+            { "igorlfs/nvim-dap-view", opts = {} },
+        },
+    },
+    "rcarriga/nvim-dap-ui",
+    -- Java
+    "mfussenegger/nvim-jdtls",
+    {
+        "stevearc/overseer.nvim",
+        opts = {},
+    },
+    "zbirenbaum/copilot.lua",
+    "folke/sidekick.nvim",
+    -- {
+    -- 	"zbirenbaum/copilot-cmp",
+    -- 	config = function()
+    -- 		require("copilot_cmp").setup()
+    -- 	end,
+    -- },
+    -- {
+    -- 	"CopilotC-Nvim/CopilotChat.nvim",
+    -- 	dependencies = {
+    -- 		{ "nvim-lua/plenary.nvim", branch = "master" },
+    -- 	},
+    -- },
+    -- { "mistricky/codesnap.nvim", build = "make" },
     {
         "nvim-neotest/neotest",
         event = "VeryLazy",
@@ -113,7 +120,6 @@ require("lazy").setup({
             "nvim-neotest/nvim-nio",
             "nvim-lua/plenary.nvim",
             "rcasia/neotest-java",
-            "antoinemadec/FixCursorHold.nvim",
             "nvim-treesitter/nvim-treesitter"
         },
         opts = {
@@ -125,6 +131,7 @@ require("lazy").setup({
     },
     "iamkarasik/sonarqube.nvim",
     "neanias/everforest-nvim",
+    "oskarnurm/koda.nvim",
     "ibhagwan/fzf-lua",
     {
         "rachartier/tiny-inline-diagnostic.nvim",

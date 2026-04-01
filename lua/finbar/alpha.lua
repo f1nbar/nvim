@@ -26,4 +26,5 @@ dashboard.section.header.opts.hl = "Include"
 dashboard.section.buttons.opts.hl = "Keyword"
 
 dashboard.opts.opts.noautocmd = true
+vim.fn.printf("%.2f", vim.loop.hrtime() / 1e6)
 alpha.setup(dashboard.opts)
