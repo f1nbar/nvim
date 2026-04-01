@@ -1,0 +1,9 @@
+-- vim.api.nvim_create_autocmd("VimLeavePre", {
+--     callback = function()
+--         -- if no active session yet
+--         if vim.v.this_session == "" then
+--             local name = vim.fn.fnamemodify(vim.loop.cwd(), ":t")
+--             MiniSessions.write(name)
+--         end
+--     end,
+-- })

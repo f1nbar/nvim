@@ -1,0 +1,5 @@
+require('plugins')
+require('configs')
+require('autocmd')
+require('keymaps')
+require('colours')
