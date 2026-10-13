@@ -3,11 +3,13 @@ local cache_vars = {}
 
 local root_files = {
     '.git',
-    -- 'mvnw',
-    -- 'gradlew',
-    -- 'pom.xml',
-    -- 'build.gradle',
-    -- 'build.sbt'
+    'pom.xml',
+    'mvnw',
+    'build.gradle',
+    'build.gradle.kts',
+    'gradlew',
+    'settings.gradle',
+    'settings.gradle.kts',
 }
 
 local features = {
@@ -25,10 +27,18 @@ local function get_jdtls_paths()
     end
 
     local path = {}
-
     path.data_dir = vim.fn.stdpath('cache') .. '/nvim-jdtls'
-    require('mason-registry').get_package('jdtls')
-    local jdtls_install = vim.fn.expand '$MASON/packages/jdtls/'
+
+    local registry = require('mason-registry')
+    if not registry.is_installed('jdtls') then
+        error('JDTLS is not installed. Install it with :MasonInstall jdtls.')
+    end
+
+    local function package_path(name)
+        return vim.fn.stdpath('data') .. '/mason/packages/' .. name
+    end
+
+    local jdtls_install = package_path('jdtls')
 
     path.java_agent = jdtls_install .. '/lombok.jar'
     path.launcher_jar = vim.fn.glob(jdtls_install .. '/plugins/org.eclipse.equinox.launcher_*.jar')
@@ -43,34 +53,29 @@ local function get_jdtls_paths()
 
     path.bundles = {}
 
-    ---
-    -- Include java-test bundle if present
-    ---
-    require('mason-registry').get_package('java-test')
-    local java_test_path = vim.fn.expand '$MASON/packages/java-test/'
+    if registry.is_installed('java-test') then
+        path.java_test_available = false
+        local java_test_path = package_path('java-test')
 
-    local java_test_bundle = vim.split(
-        vim.fn.glob(java_test_path .. '/extension/server/*.jar'),
-        '\n'
-    )
-
-    if java_test_bundle[1] ~= '' then
+        local java_test_bundle = vim.fn.glob(java_test_path .. '/extension/server/*.jar', false, true)
         vim.list_extend(path.bundles, java_test_bundle)
+        path.java_test_available = #java_test_bundle > 0
     end
 
     ---
     -- Include java-debug-adapter bundle if present
     ---
-    require('mason-registry').get_package('java-debug-adapter')
-    local java_debug_path = vim.fn.expand '$MASON/packages/java-debug-adapter/'
+    if registry.is_installed('java-debug-adapter') then
+        path.java_debug_available = false
+        local java_debug_path = package_path('java-debug-adapter')
 
-    local java_debug_bundle = vim.split(
-        vim.fn.glob(java_debug_path .. '/extension/server/com.microsoft.java.debug.plugin-*.jar'),
-        '\n'
-    )
-
-    if java_debug_bundle[1] ~= '' then
+        local java_debug_bundle = vim.fn.glob(
+            java_debug_path .. '/extension/server/com.microsoft.java.debug.plugin-*.jar',
+            false,
+            true
+        )
         vim.list_extend(path.bundles, java_debug_bundle)
+        path.java_debug_available = #java_debug_bundle > 0
     end
 
     ---
@@ -111,59 +116,112 @@ local function enable_codelens(bufnr)
     })
 end
 
-local function enable_debugger(bufnr)
-    require('jdtls').setup_dap({ hotcodereplace = 'auto' })
+local function enable_debugger(path)
+    if not features.debugger or not path.java_test_available or not path.java_debug_available then
+        return
+    end
+    local dap_ok = pcall(require, 'dap')
+    if not dap_ok then
+        return
+    end
+    local jdtls = require('jdtls')
+    jdtls.setup_dap({ hotcodereplace = 'auto' })
     require('jdtls.dap').setup_dap_main_class_configs()
-
-    local opts = { buffer = bufnr }
 end
 
 local function jdtls_on_attach(client, bufnr)
-    --vim.lsp.inlay_hint(bufnr, true)
-    if features.debugger then
-        enable_debugger(bufnr)
+    local jdtls = require('jdtls')
+    local opts = { buffer = bufnr, silent = true }
+    local function call(name, ...)
+        if type(jdtls[name]) ~= 'function' then
+            return nil
+        end
+        local args = { ... }
+        return function() jdtls[name](unpack(args)) end
+    end
+    local function map(mode, lhs, name, ...)
+        local action
+        if name == 'code_lens.run' then
+            action = function() vim.lsp.codelens.run() end
+        elseif name == 'code_lens.refresh' then
+            action = function() vim.lsp.codelens.refresh() end
+        else
+            action = call(name, ...)
+        end
+        if action then vim.keymap.set(mode, lhs, action, opts) end
     end
 
-    if features.codelens then
+    local path = cache_vars.paths
+    if path then enable_debugger(path) end
+    if features.codelens and client.server_capabilities.codeLensProvider then
         enable_codelens(bufnr)
+        map('n', '<leader>cl', 'code_lens.run')
+        map('n', '<leader>cr', 'code_lens.refresh')
     end
 
-    -- The following mappings are based on the suggested usage of nvim-jdtls
-    -- https://github.com/mfussenegger/nvim-jdtls#usage
-
-    -- local opts = { buffer = bufnr }
-    -- vim.keymap.set('n', '<A-o>', "<cmd>lua require('jdtls').organize_imports()<cr>", opts)
-    -- vim.keymap.set('n', 'crv', "<cmd>lua require('jdtls').extract_variable()<cr>", opts)
-    -- vim.keymap.set('x', 'crv', "<esc><cmd>lua require('jdtls').extract_variable(true)<cr>", opts)
-    -- vim.keymap.set('n', 'crc', "<cmd>lua require('jdtls').extract_constant()<cr>", opts)
-    -- vim.keymap.set('x', 'crc', "<esc><cmd>lua require('jdtls').extract_constant(true)<cr>", opts)
-    -- vim.keymap.set('x', 'crm', "<esc><Cmd>lua require('jdtls').extract_method(true)<cr>", opts)
-    -- vim.keymap.set('n', '<leader>pjp', "<cmd>lua require('jdtls').javap()<cr>", opts)
+    map('n', '<leader>tc', 'test_class')
+    map('n', '<leader>tn', 'test_nearest_method')
+    map('n', '<leader>tf', 'test_file')
+    map('n', '<leader>oi', 'organize_imports')
+    map('n', '<leader>ev', 'extract_variable')
+    map('x', '<leader>ev', 'extract_variable', true)
+    map('n', '<leader>ec', 'extract_constant')
+    map('x', '<leader>ec', 'extract_constant', true)
+    map('x', '<leader>em', 'extract_method', true)
+    map('n', '<leader>cp', 'compile')
+    map('n', '<leader>up', 'update_project_config')
+    map('n', '<leader>cf', 'javap')
+    if vim.lsp.inlay_hint then
+        vim.keymap.set('n', '<leader>ih', function()
+            local enabled = vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr })
+            vim.lsp.inlay_hint.enable(not enabled, { bufnr = bufnr })
+        end, opts)
+    end
 end
 
-local function jdtls_setup(event)
+local function jdtls_setup()
     local jdtls = require('jdtls')
     local extendedClientCapabilities = jdtls.extendedClientCapabilities;
     extendedClientCapabilities.onCompletionItemSelectedCommand = "editor.action.triggerParameterHints"
 
     local path = get_jdtls_paths()
-    local data_dir = path.data_dir .. '/' .. vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t')
+    local root_dir = vim.fs.root(0, root_files) or vim.fn.getcwd()
+    root_dir = vim.fn.fnamemodify(root_dir, ':p'):gsub('/+$', '')
+    local project_key = vim.fn.sha256(root_dir):sub(1, 16)
+    local data_dir = path.data_dir .. '/' .. project_key
+    path.debug_bundles = path.debug_bundles or {}
+    for _, bundle in ipairs(path.bundles) do
+        if bundle:find('com.microsoft.java.debug.plugin', 1, true) then
+            table.insert(path.debug_bundles, bundle)
+        end
+    end
 
     if cache_vars.capabilities == nil then
         jdtls.extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
-
-        local ok_cmp, cmp_lsp = pcall(require, 'cmp_nvim_lsp')
+        local ok_blink, blink_caps = pcall(function()
+            return require('blink.cmp').get_lsp_capabilities()
+        end)
         cache_vars.capabilities = vim.tbl_deep_extend(
             'force',
             vim.lsp.protocol.make_client_capabilities(),
-            ok_cmp and cmp_lsp.default_capabilities() or {}
+            ok_blink and blink_caps or {}
         )
+    end
+
+    local java_home = vim.fn.getenv('JAVA_HOME')
+    if java_home == '' and vim.fn.has('mac') == 1 then
+        java_home = vim.fn.system('/usr/libexec/java_home'):gsub('%s+$', '')
+    end
+
+    local java_executable = java_home ~= '' and (java_home .. '/bin/java') or vim.fn.exepath('java')
+    if java_executable == '' then
+        error('JDTLS requires Java. Set JAVA_HOME or add java to PATH.')
     end
 
     -- The command that starts the language server
     -- See: https://github.com/eclipse/eclipse.jdt.ls#running-from-the-command-line
     local cmd = {
-        '/Library/Java/JavaVirtualMachines/openjdk.jdk/Contents/Home/bin/java',
+        java_executable,
         '-Declipse.application=org.eclipse.jdt.ls.core.id1',
         '-Dosgi.bundles.defaultStartLevel=4',
         '-Declipse.product=org.eclipse.jdt.ls.core.product',
@@ -210,7 +268,7 @@ local function jdtls_setup(event)
                 updateBuildConfiguration = 'interactive',
                 runtimes = path.runtimes,
                 maven = {
-                    userSettings = '/Users/odeaghf/.m2/settings.xml'
+                    userSettings = vim.fn.expand('~/.m2/settings.xml')
                 }
             },
             maven = {
@@ -275,9 +333,11 @@ local function jdtls_setup(event)
     jdtls.start_or_attach({
         cmd = cmd,
         settings = lsp_settings,
-        on_attach = jdtls_on_attach,
+        on_attach = function(client, bufnr)
+            jdtls_on_attach(client, bufnr)
+        end,
         capabilities = cache_vars.capabilities,
-        root_dir = jdtls.setup.find_root(root_files),
+        root_dir = root_dir,
         flags = {
             allow_incremental_sync = true,
         },

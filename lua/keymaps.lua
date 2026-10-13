@@ -2,6 +2,12 @@ local keymap = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 local term_opts = { silent = true }
 
+local function map(mode, lhs, rhs, description, extra)
+    extra = extra or {}
+    extra.desc = description
+    vim.keymap.set(mode, lhs, rhs, extra)
+end
+
 -- Remap space as leader key
 keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
@@ -64,44 +70,34 @@ keymap("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
 keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
 keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 -- keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
-vim.api.nvim_create_autocmd("TermOpen", {
-    callback = function()
-        vim.keymap.set("t", "<C-h>", "<C-h>", { buffer = true })
-        vim.keymap.set("t", "<C-j>", "<C-j>", { buffer = true })
-        vim.keymap.set("t", "<C-k>", "<C-k>", { buffer = true })
-        vim.keymap.set("t", "<C-l>", "<C-l>", { buffer = true })
-    end,
-})
-
-keymap("n", "gl", "<cmd>lua vim.diagnostic.open_float()<cr>", opts)
-keymap("n", "gd", "<cmd>Telescope lsp_definitions<cr>", opts)
-keymap("n", "gi", "<cmd>Telescope lsp_implementations<cr>", opts)
-keymap("n", "gr", "<cmd>Telescope lsp_references<cr>", opts)
-keymap("n", "<m-a>", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
-keymap("n", "<leader>rn", "<cmd> lua vim.lsp.buf.rename()<cr>", opts)
-keymap("n", "<leader>ca", "<cmd> lua vim.lsp.buf.code_action()<cr>", opts)
-keymap("n", "<leader>F", "<cmd> lua vim.lsp.buf.format()<cr>", opts)
+keymap("n", "gl", "<cmd>lua vim.diagnostic.open_float()<cr>", vim.tbl_extend("force", opts, { desc = "Show diagnostics" }))
+keymap("n", "<m-a>", "<cmd>lua vim.lsp.buf.code_action()<cr>", vim.tbl_extend("force", opts, { desc = "Code action" }))
+keymap("n", "<leader>rn", "<cmd> lua vim.lsp.buf.rename()<cr>", vim.tbl_extend("force", opts, { desc = "Rename symbol" }))
+keymap("n", "<leader>ca", "<cmd> lua vim.lsp.buf.code_action()<cr>", vim.tbl_extend("force", opts, { desc = "Code action" }))
 
 -- Leader shortcuts (translated from which-key)
 
-keymap("n", "<leader>w", ":w!<CR>", opts)             -- Save
-keymap("n", "<leader>q", ":q!<CR>", opts)             -- Quit
-keymap("n", "<leader>c", ":bdelete!<CR>", opts)       -- Close Buffer
-keymap("n", "<leader>h", ":nohlsearch<CR>", opts)     -- No Highlight
-
-keymap("n", "<leader>e", ":Neotree toggle<CR>", opts) -- File tree
+map("n", "<leader>w", "<cmd>write<cr>", "Save buffer")
+map("n", "<leader>q", "<cmd>quit<cr>", "Quit Neovim")
+map("n", "<leader>c", "<cmd>bdelete<cr>", "Close buffer")
+map("n", "<leader>h", "<cmd>nohlsearch<cr>", "Clear search highlight")
+map("n", "<leader>e", "<cmd>Neotree toggle<cr>", "Toggle file tree")
 
 vim.keymap.set("n", "<leader>f", function()
     require("mini.pick").builtin.files()
-end)
+end, { desc = "Find files" })
 
 vim.keymap.set("n", "<leader>F", function()
     require("mini.pick").builtin.grep_live()
-end)
+end, { desc = "Live grep" })
+
+vim.keymap.set("n", "<leader>cf", function()
+    vim.lsp.buf.format()
+end, { desc = "Format buffer" })
 
 vim.keymap.set("n", "<leader>b", function()
     require("mini.pick").builtin.buffers()
-end)
+end, { desc = "Find buffers" })
 
 -- local harpoon = require("harpoon")
 --

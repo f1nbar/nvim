@@ -12,8 +12,9 @@ vim.pack.add({
     { src = "https://github.com/MunifTanjim/nui.nvim" },
     { src = "https://github.com/akinsho/toggleterm.nvim" },
     { src = "https://codeberg.org/andyg/leap.nvim" },
-    { src = "https://github.com/folke/sidekick.nvim" },
+    { src = "https://github.com/ChmaraX/herdr-nvim" },
     { src = "https://github.com/neanias/everforest-nvim" },
+    { src = "https://github.com/rose-pine/neovim", name = "rose-pine" },
     { src = "https://github.com/lewis6991/gitsigns.nvim" },
     -- { src = "https://github.com/zbirenbaum/copilot.lua" },
     { src = "https://github.com/Saghen/blink.lib" },
@@ -25,6 +26,7 @@ vim.pack.add({
 
 -- require("config.mini-comletion")
 require("config.mini-pick")
+require("config.mini-clue")
 require("mini.icons").setup()
 require("config.mini-sessions")
 require("config.mini-git")
@@ -50,5 +52,5 @@ require("config.lsp")
 require("config.toggleterm")
 -- require("config.harpoon")
 require("config.alpha")
-require("config.sidekick")
+require("config.herdr-nvim")
 require("config.gitsigns")

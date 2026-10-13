@@ -1,1 +1,0 @@
-require("clear-action").setup()
